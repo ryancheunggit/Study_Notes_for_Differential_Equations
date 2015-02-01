@@ -76,3 +76,32 @@ $$\frac{dp}{dt}=kp\\
  p(t)=Ke^{kt}
  $$  
 
+若我们通过$$1790$$年和$$1800$$年的数据来拟合模型，则：  
+$$p(0)=K=3.9$$  
+$$p(10)=3.9e^{10k}=5.3\implies k = 0.03067$$  
+因此模型为：$$p(t)=3.9e^{0.03067t}$$  
+绘图看一下模型的好坏：  
+```
+    # library
+    import sympy
+    from sympy.abc import t
+    from sympy import E as e
+    
+    # model
+    p = 3.9*e**(0.03067*t)
+    
+    # domain
+    domain = np.array(range(0,len(USPop)*10,10))
+    
+    # plot actual data and model prediction
+    plt.plot(Year,USPop,'bo')
+    plt.plot(Year,[p.subs(t,year) for year in domain])
+    # limit the y axis to see the lower part of the graph
+    plt.axis(ymax = 300)
+```
+![01-02Model1](images\01-02Model1.png)    
+
+看到1850年前，模型的预测与真实值还是较为吻合的，之后出现较大偏差。  
+
+##**练习建模，放射性衰变（radioacdtive decay）**  
+
