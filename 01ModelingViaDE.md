@@ -104,7 +104,8 @@ $$p(10)=3.9e^{10k}=5.3\implies k = 0.03067$$
 看到1850年前，模型的预测与真实值还是较为吻合的，之后出现较大偏差。  
 
 ##**3 有限资源与罗吉斯特人口模型**  
-因为自然资源是有限的，因此人口的增长会受到限制，因此对上面的模型进行如下修改： + 人口数量较少时，人口的增长速率与人口数量成正比  
+因为自然资源是有限的，因此人口的增长会受到限制，因此对上面的模型进行如下修改：  
++ 人口数量较少时，人口的增长速率与人口数量成正比  
 + 随着人口的增长，人口的**相对增长率（relative growth rate）**逐渐减小   
 人口的相对增长率定义为：  
 $$\text{relative growth rate} = \frac{(\frac{dp}{dt})}{p}=\frac{1}{p}\frac{dp}{dt}$$   
@@ -134,7 +135,7 @@ $$\text{relative growth rate} = \frac{(\frac{dp}{dt})}{p}=\frac{1}{p}\frac{dp}{d
 从导数的切线解读出发，可以做如下估计：  
 $$\frac{dp}{dt}\bigg|_{t=10}\approx\frac{p(20)-p(0)}{20}= 0.165 $$  
 因此相对增长率$$\frac{1}{p}\frac{dp}{dt}\bigg|_{t=10}=\frac{1}{5.2}\times 0.165=0.03173076923076923$$
-类似地，计算各个时刻的相对增长率：  
+类似地，可以计算各个时刻的相对增长率，画图后可以发现，相对增长率大致可以用直线来拟合,拟合一条回归线。    
 ```
     # calculate relative growth rate
     rgr = [1.0/USPop[i]*(USPop[i+1]-USPop[i-1])/20 for i in range(1,len(USPop)-1)]
@@ -152,6 +153,28 @@ $$\frac{dp}{dt}\bigg|_{t=10}\approx\frac{p(20)-p(0)}{20}= 0.165 $$
     plt.axis(xmax = 400)
 ```
 ![01-03rgr](images/01-03rgr.png)    
+
+得到人口的相对增长率函数为:$$\frac{1}{p}\frac{dp}{dt}=0.02808 + 0.000082111\times p$$  
+因此得到微分方程：$$\frac{dp}{dt}=0.02808p+0.000082111\times p^2$$   
+该微分方程的分析解法留给后面介绍，先用欧拉方法试一试该微分方程的近似效果如何：  
+```
+    # euler's method
+    from sympy.abc import p
+    pred = [3.9]
+    rgrf = intercept*p-slope*p**2
+    # step is 10
+    for i in range(22):
+        pred.append(rgrf.subs(p,pred[-1])*10+pred[-1])
+    
+    # make a plot
+    plt.plot(Year,USPop,'bo',Year,pred)
+    plt.axis(ymax = 400)
+```
+![01-04euler](images/01-04euler.png)  
+
+发现近似效果比之前的马尔萨斯增长模型要更加好。
+
+##**4 定性分析（Qualitative analysis）**    
 
 
 
