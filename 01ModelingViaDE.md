@@ -155,20 +155,19 @@ $$\frac{dp}{dt}\bigg|_{t=10}\approx\frac{p(20)-p(0)}{20}= 0.165 $$
 ![01-03rgr](images/01-03rgr.png)    
 
 得到人口的相对增长率函数为:$$\frac{1}{p}\frac{dp}{dt}=0.02808 + 0.000082111\times p$$  
-因此得到微分方程：$$\frac{dp}{dt}=0.02808p+0.000082111\times p^2$$   
+因此得到罗吉斯特微分方程：$$\frac{dp}{dt}=0.02808p+0.000082111\times p^2$$   
 该微分方程的分析解法留给后面介绍，先用欧拉方法试一试该微分方程的近似效果如何：  
 ```
     # euler's method
     from sympy.abc import p
     pred = [3.9]
-    rgrf = intercept*p-slope*p**2
+    logistModel = intercept*p+slope*p**2
     # step is 10
     for i in range(22):
-        pred.append(rgrf.subs(p,pred[-1])*10+pred[-1])
+        pred.append(logistModel.subs(p,pred[-1])*10+pred[-1])
     
     # make a plot
     plt.plot(Year,USPop,'bo',Year,pred)
-    plt.axis(ymax = 400)
 ```
 ![01-04euler](images/01-04euler.png)  
 
@@ -176,8 +175,32 @@ $$\frac{dp}{dt}\bigg|_{t=10}\approx\frac{p(20)-p(0)}{20}= 0.165 $$
 
 ##**4 定性分析（Qualitative analysis）**    
 
+3中得到人口的相对增长率，$$\frac{1}{p}\frac{dp}{dt}=k+mp$$，从函数图上看，回归线$$k+mp$$交$$p$$轴于点$$N$$。   
++ 在人口$$p<N$$时，增长率是正的，表示人口将增加    
++ 在人口$$p>N$$时，增长率是负的，表示人口将减少     
 
+用$$N$$和$$p$$表示$$m$$并带入罗吉斯特模型获得：  
+$$\frac{1}{p}\frac{dp}{dt}=k-\frac{k}{N}p$$     
+简单变换得到罗吉斯特微分方程：  
+$$\frac{dp}{dt}=kp-\frac{k}{N}p^2$$     
+注意到这是一个关于$$p$$的二次函数，二次项前系数为负，即开口朝下：  
+```
+    pdomain = np.array(range(-20,380,10))
+    plt.plot(pdomain, [logistModel.subs(p,pval) for pval in pdomain])
+    plt.axhline(0,0,1,linewidth = 2, color = 'black')
+    plt.axvline(0,0,1,linewidth = 2, color = 'black')
+    plt.text(342,0.001,'N',fontsize = 18,color="black")
+    plt.text(-20,2,r'$\frac{dp}{dt}$',fontsize = 18,color="black")
+```  
+![01-05parabola](images\01-05parabola.png)
 
+从定性的角度去分析人口随时间的变化：  
+1. $$p(0)=0\implies \forall t >0, p(t) = 0$$
+2. $$p(0)=N\implies \forall t >0, p(t) = N$$ 
+3. $$0 < p(0) <N \implies \lim_{t\rightarrow \infty}p(t) = N$$  
+4. $$p(0)>N \implies \lim_{t\rightarrow \infty}p(t) = N$$ 
+
+因此，$$N$$也被称为**承载能力（carrying capacity）**    
 
 
 
