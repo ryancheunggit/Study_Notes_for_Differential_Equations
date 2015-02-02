@@ -99,9 +99,63 @@ $$p(10)=3.9e^{10k}=5.3\implies k = 0.03067$$
     # limit the y axis to see the lower part of the graph
     plt.axis(ymax = 300)
 ```
-![01-02Model1](images\01-02Model1.png)    
+![01-02Model1](images/01-02Model1.png)    
 
 看到1850年前，模型的预测与真实值还是较为吻合的，之后出现较大偏差。  
 
-##**练习建模，放射性衰变（radioacdtive decay）**  
+##**3 有限资源与罗吉斯特人口模型**  
+因为自然资源是有限的，因此人口的增长会受到限制，因此对上面的模型进行如下修改： + 人口数量较少时，人口的增长速率与人口数量成正比  
++ 随着人口的增长，人口的**相对增长率（relative growth rate）**逐渐减小   
+人口的相对增长率定义为：  
+$$\text{relative growth rate} = \frac{(\frac{dp}{dt})}{p}=\frac{1}{p}\frac{dp}{dt}$$   
+
+罗吉斯特人口模型：  
+1. 前提假设：人口的相对增长率与人口数量之间呈反比  
+2. 变量： 
+    + 自变量: t 时间（年，从1790年开始）
+    + 因变量：p 人口 （百万）  
+    + 参数：  
+        1. k
+        2. m 人口增长速度随人口数量变化而变化的比率  
+3. 模型：  
+    + 等式左边，人口的相对增长率：$$\frac{1}{p}\frac{dp}{dt}$$    
+    + 等式右边：$$k+mp$$  
+    + 模型为：$$\frac{1}{p}\frac{dp}{dt}=k+mp$$  
+
+方法二**数值方法（Numerical Method）**  
+模型$$\frac{1}{p}\frac{dp}{dt}=k+mp$$是一条直线，需要拟合的是参数k和m，看一下手头的数据：  
+
+| t | p |
+| -- | -- |
+| 0 | 3.9 |
+| 10 | 5.3 |
+| 20 | 7.2 |  
+
+从导数的切线解读出发，可以做如下估计：  
+$$\frac{dp}{dt}\bigg|_{t=10}\approx\frac{p(20)-p(0)}{20}= 0.165 $$  
+因此相对增长率$$\frac{1}{p}\frac{dp}{dt}\bigg|_{t=10}=\frac{1}{5.2}\times 0.165=0.03173076923076923$$
+类似地，计算各个时刻的相对增长率：  
+```
+    # calculate relative growth rate
+    rgr = [1.0/USPop[i]*(USPop[i+1]-USPop[i-1])/20 for i in range(1,len(USPop)-1)]
+    
+    # fit a line to the data
+    slope, intercept = np.polyfit(USPop[1:-1],rgr,1)
+    print slope, intercept
+    # result is: -8.2111607647e-05 0.0280801486169
+    
+    # make a plot
+    plt.plot(USPop[1:-1],rgr,'bo')
+    plt.plot(np.array(range(0,350)),slope*np.array(range(0,350))+intercept)
+    plt.text(344,0.001,'N',fontsize = 18,color="black")
+    plt.axis(ymin = 0)
+    plt.axis(xmax = 400)
+```
+![01-03rgr](images/01-03rgr.png)    
+
+
+
+
+
+
 
