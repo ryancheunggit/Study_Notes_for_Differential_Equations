@@ -26,6 +26,7 @@ $$\int g(u)(\frac{du}{dt})dt = \int g(u)du \\
 \ = G(u) + k$$  
 其中：$$G'(u)=g(u)$$  
 
+练习： 
 $$\int \frac{4x}{1+4x^2}dx$$  
 换元方法：  
 $$g(u)=\frac{1}{u},\qquad G(u)=ln(u)\\
@@ -39,5 +40,21 @@ $$\int \frac{4x}{1+4x^2}dx=\frac{1}{2}\int \frac{1}{1+4x^2}8xdx\\
 ##**2 可分方程（separable equations）**  
 微分方程$$\frac{dy}{dt}=f(t,y)$$若能写成$$\frac{dy}{dt}=(f_1{(t)})(f_2{(y)})$$的形式，则称为可分方程。  
 
-可分方程可以通过分变量的方法通过换元方法求解：  
-$$(\frac{1}{f_2{(y)}})(\frac{dy}{dt})=f_1{(t)}$$  
+可分方程可以通过分变量的方法通过换元方法"求解"：  
+$$\frac{dy}{dt}=(f_1{(t)})(f_2{(y)})\\
+(\frac{1}{f_2{(y)}})(\frac{dy}{dt})=f_1{(t)}$$    
+令$$g(y)=(\frac{1}{f_2{(y)}})$$
+则有：$$g(y)(\frac{dy}{dt})=f_1{(t)}$$，两边同时针对$$t$$积分:  
+$$\int g(y)(\frac{dy}{dt})dt=\int f_1{(t)}dt\\
+\int g(y)dy=\int f_1{(t)}dt$$  
+
+例1：
+$$\frac{dy}{dt}=-2ty^2\\
+\ =(-2t)(y^2)$$  
+是可分的 
+
+例2：
+$$\frac{dy}{dt}=y^3+t^2$$
+是不可分的  
+
+##**3 **
