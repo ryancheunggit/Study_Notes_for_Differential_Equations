@@ -53,8 +53,33 @@ $$\frac{dy}{dt}=-2ty^2\\
 \ =(-2t)(y^2)$$  
 是可分的 
 
+```
+	from sympy.abc import y
+	f = -2*t*y**2
+	print sympy.separatevars(f, symbols=(t,y))
+	# result is : -2*t*y**2
+```
+
 例2：
 $$\frac{dy}{dt}=y^3+t^2$$
 是不可分的  
+
+```
+	print sympy.separatevars(y**3+t**2, symbols=(t,y))
+	# result is : t**2 + y**3
+```
+
+练习:
+$$\frac{dy}{dt}=ty+ty^2$$  
+```
+	print sympy.separatevars(t*y+t*y**2, symbols=(t,y))
+	# result is : t*y*(y + 1)
+```
+
+$$\frac{dy}{dt}=t^2y+ty^2$$
+```
+	print sympy.separatevars(t**2*y+t*y**2, symbols=(t,y))
+	# result is : t*y*(t + y)
+```
 
 ##**3 **
