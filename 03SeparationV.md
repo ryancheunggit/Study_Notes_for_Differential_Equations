@@ -82,4 +82,47 @@ $$\frac{dy}{dt}=t^2y+ty^2$$
 	# result is : t*y*(t + y)
 ```
 
-##**3 **
+##**3 可分方程的求解**
+
+方程可分，并不表示真正可解，拆分成$$\int g(y)dy=\int f_1{(t)}dt$$形式后，仍需要两边的积分可求解才行。
+
+$$\frac{dy}{dt}=-2ty^2=(-2t)(y^2)\\
+\ (\frac{1}{y^2})(\frac{dy}{dt})=-2t\\
+\ \int \frac{1}{y^2}dy=\int -2tdt\\
+\ -1\frac{1}{y}=-t^2+C\\
+\ y^{-1}=t^2+C\\
+\ y(t)=\frac{1}{t^2+C}
+$$  
+
+练习（初值问题）：
+若给定$$y(0)=\frac{1}{2}$$，则：$$c=2,y(t)=\frac{1}{t^2+2}$$   
+其定义域为：$$t\in (-\infty, \infty)$$
+
+若给定$$y(0)=-\frac{1}{2}$$，则：$$c=-2,y(t)=\frac{1}{t^2-2}$$   
+其定义域为：$$-\sqrt{2}<t<\sqrt{2}$$
+若给定$$y(-2)=\frac{1}{2}$$，则：$$c=-2,y(t)=\frac{1}{t^2-2}$$   
+其定义域为：$$-\infty<t<-\sqrt{2}$$
+若给定$$y(2)=\frac{1}{2}$$，则：$$c=-2,y(t)=\frac{1}{t^2-2}$$   
+其定义域为：$$\sqrt{2}<t<\infty$$
+虽然这三个解的形式相同，但初值不同，定义域不同，因此是三个不同的解。
+
+另外$$\forall t, y(t)=0$$也满足微分方程，称为**平衡解（equilibrium solution）**。   
+因此两者合起来才是该微分方程的一般解。    
+
+练习：
+$$\frac{dy}{dt}=2ty^2+3y^2\\
+\frac{1}{y^2}\frac{dy}{dt}=2t+3\\
+\int \frac{1}{y^2}dy = \int (2t+3)dt\\
+-1\frac{1}{y}=t^2+3t+c\\
+y(t)=-1\frac{1}{t^2+3t+C}
+$$    
+
+另外$$y(t)=0$$也满足。  
+
+```
+	from sympy import Function, dsolve, Derivative
+	y = Function('y')
+	dsolve(Derivative(y(t),t)-2*t*(y(t))**2-3*(y(t))**2,y(t))
+	# result is :  y(t) == -1/(C1 + t**2 + 3*t)
+```
+
