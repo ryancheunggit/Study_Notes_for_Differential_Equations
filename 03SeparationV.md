@@ -33,9 +33,9 @@ $$g(u)=\frac{1}{u},\qquad G(u)=ln(u)\\
 \ u={1+4x^2}\\
 \ du=8xdx$$  
 $$\int \frac{4x}{1+4x^2}dx=\frac{1}{2}\int \frac{1}{1+4x^2}8xdx\\
-\qquad = \int g(u)du\\
-\qquad = ln(u)+C\\
-\qquad = ln(1+4x^2)+C$$    
+\qquad = \frac{1}{2} \int g(u)du\\
+\qquad = \frac{1}{2} ln(u)+C\\
+\qquad = \frac{1}{2} ln(1+4x^2)+C$$    
 
 ##**2 可分方程（separable equations）**  
 微分方程$$\frac{dy}{dt}=f(t,y)$$若能写成$$\frac{dy}{dt}=(f_1{(t)})(f_2{(y)})$$的形式，则称为可分方程。  
