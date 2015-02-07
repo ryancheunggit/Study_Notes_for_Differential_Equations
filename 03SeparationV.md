@@ -126,3 +126,47 @@ $$
 	# result is :  y(t) == -1/(C1 + t**2 + 3*t)
 ```
 
+##**4 牛顿冷却定律（Newton’s law of cooling）**    
+1. 前提假设：物体的冷却速率与（物体的当前温度与环境温度之差）成正比。    
+2. 变量：  
+	+ 自变量： t 时间  （分钟）
+	+ 因变量： T 温度  （摄氏度）
+	+ 参数：  
+		1. $$\alpha$$ 冷却速率与温差所成比率  
+		2. C 室温
+3. 建模：  
+	+ 等式左边： $$\frac{dT}{dt}$$  
+	+ 等式右边： $$\alpha (T-C)$$  
+	+ 模型为： $$\frac{dT}{dt}=\alpha(T-C)$$  
+
+假设现在有一杯70度的咖啡（T(0)=70），室温为20度（C=20），且知道当前咖啡冷却的速率为5度/分钟（$$\frac{DT}{dt}\biggh_{t=0}=-5$$），求咖啡冷却至40度所需时间。
+$$\frac{dT}{dt}=\alpha(T-20)$$   
+$$\frac{dT}{dt}\biggh_{t=0}=\alpha(70-20)=-5\\
+\qquad \implies \alpha = -0.1\\
+\frac{dT}{dt}=-0.1(T-20), T(0)=70$$    
+
+通过分离变量法求解：  
+$$\frac{1}{T-20}\frac{dT}{dt}=-0.1\\
+\int\frac{1}{T-20}dT=\int -0.1dt\\
+ln(T-20)=-0.1t+C\\
+T-20=e^{-0.1t+C}\\
+T(t)=20+Ke^{-0.1t}
+$$
+
+带入初值：
+$$T(0)=20+K=70\\
+\implies K=50\\
+T(t)=20+50e^{-0.1t}
+$$
+
+求所需时间：  
+$$20+50e^{-0.1t}=40\\
+\implies t = -ln(\frac{2}{5})\approx 9.2$$  
+
+```
+	T = Function('T')
+	from sympy.abc import c, a
+	dsolve(Derivative(T(t),t)-a*(T(t)-c),T(t))
+	# result is : T(t) == C1*exp(a*t) + c
+```
+
