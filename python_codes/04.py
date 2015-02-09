@@ -139,6 +139,4 @@ ydomainm = np.linspace(-3,3,20)
 
 for i in range(len(formulas)):
     plt.subplot(2,4,i+1)
-    plotSlopeField(tdomainm,ydomainm,formulas[i],[])
-
-plt.show()
+    plotSlopeField(tdomainm,ydomainm,formulas[i])
