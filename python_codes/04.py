@@ -70,7 +70,7 @@ def plotSlopeField(tdomain,ydomain,formula,points = []):
         solutions = 0
 
     # plot the solutions through the given points
-    if points != []:
+    if points != [] and solutions != 0:
         for p in points:
             from sympy import Eq, solve
             C1 = solve(Eq(solutions.subs(t,p[0]),p[1]))[0]
@@ -137,6 +137,50 @@ formulas = [t-1,
 tdomainm = np.linspace(-3,3,20)
 ydomainm = np.linspace(-3,3,20)
 
+for i in range(len(formulas)):
+    plt.subplot(2,4,i+1)
+    plotSlopeField(tdomainm,ydomainm,formulas[i])
+
+# ps 1
+f = y(t)**2*(y(t)-2)
+plotSlopeField(np.linspace(-2,2,30), np.linspace(-2,2,30),f)
+
+# ps 2
+f = y(t)*(-1)*(t+1)**2
+plotSlopeField(np.linspace(-4,4,30), np.linspace(-4,4,30),f,[(0,0),(0,1),(0,2)(0,3)])
+
+# ps 3
+f = 2*y(t)+t+2
+points = [(0,-3),(0,-2),(0,-1),(0,0),(0,1),(0,2),(0,3)]
+for i in range(len(points)):
+    plt.subplot(2,4,i+1)
+    plotSlopeField(np.linspace(-10,10,30), np.linspace(-5,5,30),f,[points[i]])
+
+# ps 4
+f = y(t)**3-2*y(t)**2+y(t)
+plotSlopeField(np.linspace(-10,10,30), np.linspace(-5,5,30),f)
+
+# ps 5
+import sympy
+f = -1*sympy.sin(t)
+plotSlopeField(np.linspace(-2,10,30), np.linspace(-1.2,2.2,30),f,[(0,1),(0,2)])
+
+# ps 6
+import sympy
+f = -1*sympy.exp(y(t))+1
+plotSlopeField(np.linspace(-2,10,30), np.linspace(-1,5,30),f)
+
+# ps 7
+formulas = [y(t)**2+y(t)-2,
+            y(t)**2-y(t)-2,
+            t**2-2,
+            t**2-2*t,
+            t*y(t)-t,
+            t*y(t)+t,
+            y(t)+t**2,
+            y(t)-2*t]
+tdomainm = np.linspace(-3,3,20)
+ydomainm = np.linspace(-3,3,20)
 for i in range(len(formulas)):
     plt.subplot(2,4,i+1)
     plotSlopeField(tdomainm,ydomainm,formulas[i])
