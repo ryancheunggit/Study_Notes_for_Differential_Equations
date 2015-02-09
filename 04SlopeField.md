@@ -99,7 +99,10 @@
     
         # solve the differential equation
         from sympy import Derivative, dsolve
-        solutions = dsolve(Derivative(y(t),t)-formula,y(t)).args[1]
+        try:
+            solutions = dsolve(Derivative(y(t),t)-formula,y(t)).args[1]
+        except:
+            solutions = 0
         
         # plot the solutions through the given points
         if points != []:
@@ -144,11 +147,11 @@
 两个值得我们特别注意的特例：  
 $$\frac{dy}{dt}=f(t)$$   
 即右边只包含$$t$$，若给定一个$$t$$值$$t_0$$，则经过该点垂直于$$t$$轴的直线$$t=t_0$$上的任意一点在斜率场中的方向均相同（平行）。  
-任意一个解都可以视为是将另一个解沿着$$y$$轴移动获得的。
+任意一个解都可以视为是将另一个解沿着竖直方向移动获得的。
 
 例如：$$\frac{dy}{dt}=cost$$  
 一般解为:$$y(t)=(sint)+C$$  
-其中$$C$$是任意常数，不同的解之间只有常数项不同，相当于将$$sint$$的函数图，沿着$$y$$轴移动获得的。  
+其中$$C$$是任意常数，不同的解之间只有常数项不同，相当于将$$sint$$的函数图，沿着竖直方向移动获得的。  
 ```
     import sympy
     formula3 = sympy.cos(t)
@@ -174,6 +177,7 @@ Use dfield to plot the slope field for $$\frac{dy}{dt}=t(t^2−1)$$ on a window 
 另一个特例是：  
 $$\frac{dy}{dt}=f(y)$$     
 这样的斜率场是沿着水平直线上的各点的斜率方向均平行的。  
+任意一个解都可以视为是将另一个解沿着水平方向移动获得的。
 例如：  
 $$\frac{dy}{dt}=y(1-y)$$   
 其一般解为：
@@ -188,6 +192,25 @@ $$y(t)=\frac{e^t}{1+e^t}$$
 ```
 ![04-07SpecialCase2](images/04-07SpecialCase2.png)
 
+## 练习：
 
+```
+    formulas = [t-1,
+                t+1,
+                y(t)+1,
+                y(t)-1,
+                y(t)**2+y(t),
+                y(t)*(y(t)**2-1),
+                y(t)-t,
+                y(t)+t]
+    tdomainm = np.linspace(-3,3,20)
+    ydomainm = np.linspace(-3,3,20)
 
+    for i in range(len(formulas)):
+        plt.subplot(2,4,i+1)
+        plotSlopeField(tdomainm,ydomainm,formulas[i],[])
+
+    plt.show()
+```
+![04-08FieldsShow](images/04-08FieldsShow.png)  
 

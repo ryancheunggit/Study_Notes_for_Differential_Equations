@@ -64,7 +64,10 @@ def plotSlopeField(tdomain,ydomain,formula,points = []):
 
     # solve the differential equation
     from sympy import Derivative, dsolve
-    solutions = dsolve(Derivative(y(t),t)-formula,y(t)).args[1]
+    try:
+        solutions = dsolve(Derivative(y(t),t)-formula,y(t)).args[1]
+    except:
+        solutions = 0
 
     # plot the solutions through the given points
     if points != []:
@@ -110,7 +113,32 @@ fg3.show()
 
 # exercise
 formula4 = t*(t**2-1)
-tdomain = np.linspace(-2,2,30)
-ydomain = np.linspace(-1,1,30)
-fg4 = plotSlopeField(tdomain3,ydomain3,formula3)
+tdomain4 = np.linspace(-2,2,30)
+ydomain4 = np.linspace(-1,1,30)
+fg4 = plotSlopeField(tdomain4,ydomain4,formula4)
 fg4.show()
+
+# special case2
+formula5 = y(t)*(1-y(t))
+tdomain5 = np.linspace(-8,8,30)
+ydomain5 = np.linspace(-1,2,30)
+fg5 = plotSlopeField(tdomain5,ydomain5,formula5,[(1,1),(1,0.5),(-2,0.5),(3,0.5)])
+fg5.show()
+
+# exercise
+formulas = [t-1,
+            t+1,
+            y(t)+1,
+            y(t)-1,
+            y(t)**2+y(t),
+            y(t)*(y(t)**2-1),
+            y(t)-t,
+            y(t)+t]
+tdomainm = np.linspace(-3,3,20)
+ydomainm = np.linspace(-3,3,20)
+
+for i in range(len(formulas)):
+    plt.subplot(2,4,i+1)
+    plotSlopeField(tdomainm,ydomainm,formulas[i],[])
+
+plt.show()
