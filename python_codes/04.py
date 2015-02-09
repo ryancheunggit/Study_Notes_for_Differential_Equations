@@ -98,3 +98,19 @@ formula2 = 0.2*(t - 1)**2 + 0.5*y(t)
 domain2 = np.linspace(-5,5,30)
 fg2 = plotSlopeField(domain2,domain2,formula2,[(5,5)])
 fg2.show()
+
+
+# special case
+import sympy
+formula3 = sympy.cos(t)
+tdomain3 = np.linspace(-6,6,30)
+ydomain3 = np.linspace(-2,2,30)
+fg3 = plotSlopeField(tdomain3,ydomain3,formula3,[(0,0),(0,1),(0,-1)])
+fg3.show()
+
+# exercise
+formula4 = t*(t**2-1)
+tdomain = np.linspace(-2,2,30)
+ydomain = np.linspace(-1,1,30)
+fg4 = plotSlopeField(tdomain3,ydomain3,formula3)
+fg4.show()

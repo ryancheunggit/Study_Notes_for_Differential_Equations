@@ -159,7 +159,16 @@ $$\frac{dy}{dt}=f(t)$$
 ```
 ![04-05SpecialCase](images/04-05SpecialCase.png)
 
-
+## 练习：
+Use dfield to plot the slope field for $$\frac{dy}{dt}=t(t^2−1)$$ on a window with −2≤t≤2 and −1≤y≤1.
+```
+    formula4 = t*(t**2-1)
+    tdomain = np.linspace(-2,2,30)
+    ydomain = np.linspace(-1,1,30)
+    fg4 = plotSlopeField(tdomain3,ydomain3,formula3)
+    fg4.show()
+```
+![04-06Ex2](04-06Ex2.png)    
 
 
 
