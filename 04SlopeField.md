@@ -184,10 +184,10 @@ $$\frac{dy}{dt}=y(1-y)$$
 $$y(t)=\frac{e^t}{1+e^t}$$     
 
 ```
-    formula5 = y(t)*(1-y(t))  
+    formula5 = y(t)*(1-y(t))
     tdomain5 = np.linspace(-8,8,30)
     ydomain5 = np.linspace(-1,2,30)
-    fg5 = plotSlopeField(tdomain5,ydomain5,formula5)
+    fg5 = plotSlopeField(tdomain5,ydomain5,formula5,[(1,1),(1,0.5),(-2,0.5),(3,0.5)])
     fg5.show()
 ```
 ![04-07SpecialCase2](images/04-07SpecialCase2.png)
