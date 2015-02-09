@@ -129,7 +129,7 @@
 ```
 ![04-03LinesInField](images/04-03LinesInField.png)    
 
-# exercise: 
+## exercise: 
 绘制$$y'=y/2 + (.2)(t-1)^2$$的斜率场，找到经过$$(5,5)$$的解。
 ```
     formula2 = 0.2*(t - 1)**2 + 0.5*y(t)
@@ -138,6 +138,26 @@
     fg2.show()
 ```
 ![04-04Ex](images/04-04Ex.png)    
+
+##特例
+
+两个值得我们特别注意的特例：  
+$$\frac{dy}{dt}=f(t)$$   
+即右边只包含$$t$$，若给定一个$$t$$值$$t_0$$，则经过该点垂直于$$t$$轴的直线$$t=t_0$$上的任意一点在斜率场中的方向均相同（平行）。  
+任意一个解都可以视为是将另一个解沿着$$y$$轴移动获得的。
+
+例如：$$\frac{dy}{dt}=cost$$  
+一般解为:$$y(t)=(sint)+C$$  
+其中$$C$$是任意常数，不同的解之间只有常数项不同，相当于将$$sint$$的函数图，沿着$$y$$轴移动获得的。  
+```
+    import sympy
+    formula3 = sympy.cos(t)
+    tdomain3 = np.linspace(-6,6,30)
+    ydomain3 = np.linspace(-2,2,30)
+    fg3 = plotSlopeField(tdomain3,ydomain3,formula3,[(0,0),(0,1),(0,-1)])
+    fg3.show()
+```
+![04-05SpecialCase](images/04-05SpecialCase.png)
 
 
 
