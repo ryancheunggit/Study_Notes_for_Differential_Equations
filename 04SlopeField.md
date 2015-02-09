@@ -139,7 +139,7 @@
 ```
 ![04-04Ex](images/04-04Ex.png)    
 
-##特例
+##特例1
 
 两个值得我们特别注意的特例：  
 $$\frac{dy}{dt}=f(t)$$   
@@ -163,12 +163,31 @@ $$\frac{dy}{dt}=f(t)$$
 Use dfield to plot the slope field for $$\frac{dy}{dt}=t(t^2−1)$$ on a window with −2≤t≤2 and −1≤y≤1.
 ```
     formula4 = t*(t**2-1)
-    tdomain = np.linspace(-2,2,30)
-    ydomain = np.linspace(-1,1,30)
-    fg4 = plotSlopeField(tdomain3,ydomain3,formula3)
+    tdomain4 = np.linspace(-2,2,30)
+    ydomain4 = np.linspace(-1,1,30)
+    fg4 = plotSlopeField(tdomain4,ydomain4,formula4)
     fg4.show()
 ```
-![04-06Ex2](04-06Ex2.png)    
+![04-06Ex2](images/04-06Ex2.png)    
+
+##特例2 
+另一个特例是：  
+$$\frac{dy}{dt}=f(y)$$     
+这样的斜率场是沿着水平直线上的各点的斜率方向均平行的。  
+例如：  
+$$\frac{dy}{dt}=y(1-y)$$   
+其一般解为：
+$$y(t)=\frac{e^t}{1+e^t}$$     
+
+```
+    formula5 = y(t)*(1-y(t))  
+    tdomain5 = np.linspace(-8,8,30)
+    ydomain5 = np.linspace(-1,2,30)
+    fg5 = plotSlopeField(tdomain5,ydomain5,formula5)
+    fg5.show()
+```
+![04-07SpecialCase2](images/04-07SpecialCase2.png)
+
 
 
 
