@@ -7,3 +7,4 @@
    + [分离变量法](03SeparationV.md)  
    + [斜率场](04SlopeField.md)    
    + [欧拉方法](05EulerMethod.md)  
+   + [解的存在性和唯一性](06EUofSolution)  
