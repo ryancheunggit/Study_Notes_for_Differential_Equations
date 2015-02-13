@@ -82,7 +82,7 @@ $$\frac{dy}{dt}=e^{t}siny,\qquad y(0)=5$$
     fg = plotEulerAndSF(formula, tval, yval, 0.05, tdomain, ydomain)
     fg.show()
 ```
-![05-01EulerVsField]05-01EulerVsField.png)
+![05-01EulerVsField](images/05-01EulerVsField.png)
 
 
 
