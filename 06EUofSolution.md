@@ -71,7 +71,8 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
 ```
     formula.diff(y(t))
     # result is : sin(2*t)/(3*y(t)**(2/3))
-``
+```  
+
 $$\frac{\partial f}{\partial y}= \frac{sin(2t)}{{3y}^{\frac{2}{3}}}$$  
 y不可取0，因而不是连续的，因此违背唯一性定理。  
 
@@ -82,10 +83,13 @@ $$\frac{dy}{dt}=-2ty^2,\frac{\partial f}{\partial y}=-4ty$$
 注意到$$f(t,y)$$和$$\partial f/ \partial y$$在$$t-y$$平面上均连续，因此微分方程不仅有解，给定初值则解为唯一解。  
 
 回到上节结束时的例子：
+![05-01EulerVsField](images/05-01EulerVsField.png)
+$$\frac{dy}{dt}=e^{t}siny,\qquad y(0)=5$$
+如果只看欧拉方法获得的近似解，会很让人迷惑。
 
-
-
-
+因为$$f(t,y)$$在$$t-y$$平面是连续的，由存在性定理知道微分方程有解。
+并且$$\frac{\partial f}{\partial y}=e^{t}cos(y)$$在$$t-y$$平面也是连续的，由存在性定理知道微分方程有唯一解。
+注意到$$y(t)=k\pi, k \in \mathbb{R}$$是方程的平衡解。而在$$k\pi < y < (k+1)\pi$$范围内，根据$$k$$的取值不同，$$\frac{dy}{dt}$$要么全为正，要么全为负，即无论初值如何，随着$$t$$的增加，$$y(t)$$总会收敛于$$k\pi$$
 
 
 
