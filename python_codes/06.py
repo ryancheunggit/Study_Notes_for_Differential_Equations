@@ -27,3 +27,33 @@ solution3 = -1*(8.0/27)**0.5*(sympy.sin(t))**3
 plt.plot(tdomain, [0 for i in tdomain], 'blue', \
          tdomain, np.array([solution2.subs(t, tval) for tval in tdomain]), 'black',\
          tdomain, np.array([solution3.subs(t, tval) for tval in tdomain]), 'red')
+
+
+# ps 1
+
+# ps 2
+
+formula = 1.0/(y(t)+2)**2
+dsolve(Eq(Derivative(y(t),t),formula))
+
+# ps 3
+formula = sympy.root(y(t),3)*sympy.sin(2*t)
+dsolve(Eq(Derivative(y(t),t),formula))
+
+# ps 4
+
+formula = -1*y(t)**2+y(t)+2*y(t)+t**2+2*t-t**2-t**4
+dsolve(Eq(Derivative(y(t),t),formula))
+
+formula.subs('y(t)', t**2-1).simplify()
+
+formula.subs('y(t)', t**2).simplify()
+
+formula.subs('y(t)', t**2+1).simplify()
+
+formula.subs('y(t)', t**2+2).simplify()
+
+# ps 5
+
+formula = y(t)/(t**2)
+dsolve(Eq(Derivative(y(t),t),formula))
