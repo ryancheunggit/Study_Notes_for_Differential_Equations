@@ -17,7 +17,7 @@
 2. 在$$y<0$$的区域，$$\frac{dy}{dt}<0$$，即形为$$y(t_0)=y_0, y_0 <0$$的初值问题，随着$$t$$的增加，函数值终会收敛于$$y(t)=-\infty$$  
 3. 在$$0<y<1$$的区域,$$\frac{dy}{dt}>0$$,即形为$$y(t_0)=y_0, 0<y_0 <1$$的初值问题，，随着$$t$$的增加，函数值终会收敛于$$y(t)=1$$    
 
-用一根直线表示$$y(t)$$的值，用点表示平衡解，用箭头表示各个区域的初值问题，随着$$t$$的增加，$$y(t)$$值得走向：
+用一根直线表示$$y(t)$$的值，用点表示平衡解，用箭头表示各个区域的初值问题，随着$$t$$的增加，$$y(t)$$值的走向：
 ```
     import sympy
     from sympy.abc import t
@@ -51,6 +51,26 @@
     fg = phaseLine(formula)
     fg.show()
 ```
-
 ![07-01phaseLine](images/07-01phaseLine.png)
 
+练习：画出$$\frac{dy}{dt}=y^2-4y-12$$的相线  
+```
+    formula = y(t)**2 - 4*y(t) - 12
+    fg2 = phaseLine(formula)
+    fg2.show()
+```
+![07-02phaseLine2](images/07-02phaseLine2.png)   
+
+练习：画出$$\frac{dy}{dt}=3y^3-12y^2$$的相线  
+
+```
+    formula = 3*y(t)**3-12*y(t)**2
+    fg3 = phaseLine(formula)
+    fg3.show()
+```
+![07-03phaseLine3](images/07-03phaseLine2.png)   
+
+
+
+
+#
