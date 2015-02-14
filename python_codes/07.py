@@ -1,31 +1,76 @@
-    import sympy
-    from sympy.abc import t
-    from sympy import Function, Derivative, dsolve, Eq, solve
+import sympy
+from sympy.abc import t
+from sympy import Function, Derivative, dsolve, Eq, solve
 
-    def phaseLine(formula):
+def phaseLine(formula):
 
+    solutions = solve(Eq(formula,0),y(t))
+    solutions.sort()
+    ran = solutions[-1]-solutions[0]
+    ydomain = np.linspace(float(solutions[0]-0.25*ran), float(solutions[-1]+0.25*ran))
+
+    fig = plt.figure(num=1)
+    plt.plot([0 for dummy in ydomain],ydomain, color = 'black')
+    plt.plot([0 for dummy in solutions], solutions, 'or')
+    plt.axis(xmin = -0.5, xmax = 0.5)
+
+    intervals = [float(solutions[0]-0.25*ran)]+solutions+[float(solutions[-1]+0.25*ran)]
+    for i in range(len(intervals)-1):
+        midpoint = (intervals[i]+intervals[i+1])/2.0
+        intervalSign = sign(formula.evalf(subs={'y(t)':midpoint}))
+        if intervalSign == -1:
+            plt.text(0, midpoint, u'\u2193',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+        elif intervalSign == 1:
+            plt.text(0, midpoint, u'\u2191',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+    return fig
+
+
+
+y = Function('y')
+formula = y(t)*(1-y(t))
+fg = phaseLine(formula)
+fg.show()
+
+
+# exercise
+formula = y(t)**2 - 4*y(t) - 12
+fg2 = phaseLine(formula)
+fg2.show()
+
+# exercise
+formula = 3*y(t)**3-12*y(t)**2
+fg3 = phaseLine(formula)
+fg3.show()
+
+
+def phaseLine(formula, solutions = None):
+    if solutions == None:
         solutions = solve(Eq(formula,0),y(t))
         solutions.sort()
-        ran = solutions[-1]-solutions[0]
-        ydomain = np.linspace(float(solutions[0]-0.25*ran), float(solutions[-1]+0.25*ran))
 
-        fig = plt.figure(num=1)
-        plt.plot([0 for dummy in ydomain],ydomain, color = 'black')
-        plt.plot([0 for dummy in solutions], solutions, 'or')
-        plt.axis(xmin = -0.5, xmax = 0.5)
+    ran = solutions[-1]-solutions[0]
 
-        intervals = [float(solutions[0]-0.25*ran)]+solutions+[float(solutions[-1]+0.25*ran)]
-        for i in range(len(intervals)-1):
-            midpoint = (intervals[i]+intervals[i+1])/2.0
-            intervalSign = sign(formula.evalf(subs={'y(t)':midpoint}))
-            if intervalSign == -1:
-                plt.text(0, midpoint, u'\u2193',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
-            elif intervalSign == 1:
-                plt.text(0, midpoint, u'\u2191',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+    ydomain = np.linspace(float(solutions[0]-0.25*ran), float(solutions[-1]+0.25*ran))
 
-        return fig
+    fig = plt.figure(num=1)
+    plt.plot([0 for dummy in ydomain],ydomain, color = 'black')
+    plt.plot([0 for dummy in solutions], solutions, 'or')
+    plt.axis(xmin = -0.5, xmax = 0.5)
 
-    y = Function('y')
-    formula = y(t)*(1-y(t))
-    fg = phaseLine(formula)
-    fg.show()
+    intervals = [float(solutions[0]-0.25*ran)]+solutions+[float(solutions[-1]+0.25*ran)]
+    for i in range(len(intervals)-1):
+        midpoint = (intervals[i]+intervals[i+1])/2.0
+        intervalSign = sign(formula.evalf(subs={'y(t)':midpoint}))
+        if intervalSign == -1:
+            plt.text(0, midpoint, u'\u2193',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+        elif intervalSign == 1:
+            plt.text(0, midpoint, u'\u2191',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+    return fig
+
+
+formula = y(t)**2*sympy.cos(y(t))
+fg4 = phaseLine(formula)
+fg4.show()
+
+fg5 = phaseLine(formula, [-3/2.0*pi,-1.0/2*pi,0,1.0/2*pi,3/2.0*pi])
+fg5.show()
