@@ -8,3 +8,4 @@
    + [斜率场](04SlopeField.md)    
    + [欧拉方法](05EulerMethod.md)  
    + [解的存在性和唯一性](06EUofSolution.md)    
+   + [自治微分方程](07autonomousEquations.md)    
