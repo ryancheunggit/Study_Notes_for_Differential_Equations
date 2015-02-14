@@ -68,7 +68,7 @@
     fg3 = phaseLine(formula)
     fg3.show()
 ```
-![07-03phaseLine3](images/07-03phaseLine2.png)   
+![07-03phaseLine3](images/07-03phaseLine3.png)   
 
 
 
