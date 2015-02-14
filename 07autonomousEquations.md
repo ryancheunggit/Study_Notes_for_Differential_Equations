@@ -23,11 +23,13 @@
     from sympy.abc import t
     from sympy import Function, Derivative, dsolve, Eq, solve
     
-    def phaseLine(formula):
+     def phaseLine(formula, solutions = None):
+        if solutions == None:
+            solutions = solve(Eq(formula,0),y(t))
+            solutions.sort()
     
-        solutions = solve(Eq(formula,0),y(t))
-        solutions.sort()
         ran = solutions[-1]-solutions[0]
+            
         ydomain = np.linspace(float(solutions[0]-0.25*ran), float(solutions[-1]+0.25*ran))
     
         fig = plt.figure(num=1)
@@ -43,9 +45,8 @@
                 plt.text(0, midpoint, u'\u2193',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
             elif intervalSign == 1:
                 plt.text(0, midpoint, u'\u2191',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
-    
         return fig
-    
+
     y = Function('y')
     formula = y(t)*(1-y(t))
     fg = phaseLine(formula)
@@ -61,14 +62,17 @@
 ```
 ![07-02phaseLine2](images/07-02phaseLine2.png)   
 
-练习：画出$$\frac{dy}{dt}=3y^3-12y^2$$的相线  
+练习：画出$$\frac{dy}{dt}=y^cosy$$的相线  
 
 ```
-    formula = 3*y(t)**3-12*y(t)**2
-    fg3 = phaseLine(formula)
+    formula = y(t)**2*sympy.cos(y(t))
+    fg3 = phaseLine(formula, [-3/2.0*pi,-1.0/2*pi,0,1.0/2*pi,3/2.0*pi])
     fg3.show()
 ```
 ![07-03phaseLine3](images/07-03phaseLine3.png)   
+
+绘制$$\frac{dy}{dt}$$关于$$y$$的函数图，有助于绘制相线。   
+
 
 
 
