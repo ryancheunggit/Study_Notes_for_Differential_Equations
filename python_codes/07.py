@@ -74,3 +74,8 @@ fg4.show()
 
 fg5 = phaseLine(formula, [-3/2.0*pi,-1.0/2*pi,0,1.0/2*pi,3/2.0*pi])
 fg5.show()
+
+
+# ps 2
+formula = (1-y(t))*sympy.sin(y(t))
+phaseLine(formula, [-2.0*pi,-1.0*pi,0, 1.0, pi,2.0*pi])
