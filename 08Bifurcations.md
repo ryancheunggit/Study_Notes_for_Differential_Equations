@@ -17,13 +17,13 @@ $$\frac{dy}{dt}=y(1-y)-a$$
 其中$$a$$为参数,试看调整$$a$$的值，导致的相线变化： 
 
 ```
-    
-    
     y = Function('y')
-    avals = [0, 0.125, 0.25, 0.375]
-    formula = y(t)*(1-y(t))-a
-    
-    bifurcationDiagram(formula, avals, np.linspace(-0.5,1.5), True)
+    avals = [0, -0.125, -0.25, -0.375]
+    formula = y(t)*(1-y(t))+a
+    domain = np.linspace(-0.5,1.5)
+    for i in range(len(avals)):
+        plt.subplot(1, len(avals), i+1)
+        phaseLine(formula.subs(a, avals[i]), [], domain, True)
 ```
 ![08-01phaseLines](images/08-01phaseLines.png)
 
@@ -32,10 +32,75 @@ $$\frac{dy}{dt}=y(1-y)-a$$
 另一个例子：
 $$\frac{dy}{dt}=y^3-ay$$  
 
+```
+    formula = y(t)**3-a*y(t)
+    avals = [-3, -2,-1, 0, 1, 2, 3]
+    domain = np.linspace(-3,3)
+    
+    for i in range(len(avals)):
+        plt.subplot(1, len(avals), i+1)
+        phaseLine(formula.subs(a, avals[i]), [], domain, True)
+```
+
+
 ![08-02bifurcationDiagram.png](images/08-02bifurcationDiagram.png)
 
 绘制其分歧图，则只需要将上图中红点链接起来即可。
 
+```
+    def bifurcationDiagram(formula, avals, ydomain = np.linspace(-3,3)):
+        fig = plt.figure(num=1)
+        plt.axis(xmin = min(avals)-0.5, xmax = max(avals)+0.5)
+        solutions = solve(formula,y(t))
+        try:
+            solutions.pop(solutions.index(0))
+            for s in solutions:
+            adomain = np.linspace(float(solve(s, a)[0]), max(avals))
+            yvals = [s.subs(a,aval) for aval in adomain]
+            plt.plot(adomain, yvals, color = 'blue')
+        except:
+            None
+            
+        for aval in avals:
+            formli = formula.subs(a, aval)
+            solutions = solve(Eq(formli,0),y(t))
+            try:
+                solutions.sort()
+                ran = solutions[-1]-solutions[0]
+                if len(solutions) == 1:
+                    intervals = [solutions[0]-0.5, solutions[0], solutions[0]+0.5]
+                else:
+                    intervals = [float(solutions[0]-0.25*ran)]+solutions+[float(solutions[-1]+0.25*ran)]
+            except:    
+                if 0 in solutions:
+                    signVals = [ydomain[12],ydomain[38]]
+                else:
+                    signVals = [0]
+                solutions = []
+        
+            plt.plot([aval for dummy in ydomain],ydomain, color = 'black')
+            plt.plot([aval for dummy in solutions], solutions, 'or')
+        
+            if solutions != []:
+                for i in range(len(intervals)-1):
+                    midpoint = (intervals[i]+intervals[i+1])/2.0
+                    intervalSign = sign(formli.evalf(subs={'y(t)':midpoint}))
+                    if intervalSign == -1:
+                        plt.text(aval, midpoint, u'\u2193',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+                    elif intervalSign == 1:
+                        plt.text(aval, midpoint, u'\u2191',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+            else:
+                for val in signVals:
+                    intervalSign = sign(formli.evalf(subs={'y(t)':val}))
+                    if intervalSign == -1:
+                        plt.text(aval, val, u'\u2193',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+                    elif intervalSign == 1:
+                        plt.text(aval, val, u'\u2191',fontname='STIXGeneral', color = 'blue', size=30, va='center', ha='center', clip_on=True)
+        return fig
+        
+    bifurcationDiagram(formula, avals, domain)
+```
+![08-03bifurcationDiagramBetter.png](images/08-03bifurcationDiagramBetter.png)   
 
 
 
