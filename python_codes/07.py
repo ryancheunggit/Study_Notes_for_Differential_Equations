@@ -84,8 +84,11 @@ formula = (1-y(t))*sympy.sin(y(t))
 phaseLine(formula, [-2.0*pi,-1.0*pi,0, 1.0, pi,2.0*pi])
 
 
-def phaseLine(formula, domain = np.linspace(-1,1), domainFix = False):
-    solutions = solve(Eq(formula,0),y(t))
+def phaseLine(formula, points = [], domain = np.linspace(-1,1), domainFix = False):
+    if points != []:
+        solutions = points
+    else:
+        solutions = solve(Eq(formula,0),y(t))
     try:
         solutions.sort()
         ran = solutions[-1]-solutions[0]
