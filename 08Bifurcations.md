@@ -102,6 +102,14 @@ $$\frac{dy}{dt}=y^3-ay$$
 ```
 ![08-03bifurcationDiagramBetter.png](images/08-03bifurcationDiagramBetter.png)   
 
+分歧点可能不止一个，例如：
+
+$$\frac{dy}{dt}= (y^2-\alpha)(y^2-4)$$   
+分歧点有两个，$$a=0$$和$$a=4$$  
+
+见分歧图：
+
+![08-04ex.png](images/08-04ex.png)    
 
 
 
