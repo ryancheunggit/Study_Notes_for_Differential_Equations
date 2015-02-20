@@ -78,7 +78,7 @@ def bifurcationDiagram(formula, avals, ydomain = np.linspace(-3,3)):
 
 
 
-formula = y(t)**3-a*y(t)
+formula = y(t)**3+a*y(t)
 avals = [-3, -2,-1, 0, 1, 2, 3]
 domain = np.linspace(-3,3)
 bifurcationDiagram(formula, avals, domain)
@@ -89,4 +89,25 @@ bifurcationDiagram(formula, avals, domain)
 formula = (y(t)**2-a)*(y(t)**2-4)
 avals = [0, 1, 2, 3, 4, 5]
 domain = np.linspace(-4,4)
+bifurcationDiagram(formula, avals, domain)
+
+
+# ex4
+formula = y(t)**2+3*y(t)+a
+avals = [0,3.0/4,6.0/4,9.0/4,13.0/4]
+domain = np.linspace(-5,3.5)
+
+
+bifurcationDiagram(formula, avals, domain)
+
+# ex6
+
+formula = 4*y(t)-y(t)**2
+avals = [-3,-2,-1, 0,1,2,3]
+domain = np.linspace(-5,5)
+bifurcationDiagram(formula, avals, domain)
+
+formula = 4+y(t)**2
+avals = [-4,-2,0,2,4,6]
+domain = np.linspace(-5,5)
 bifurcationDiagram(formula, avals, domain)
