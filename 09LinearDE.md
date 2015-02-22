@@ -36,6 +36,46 @@ $$\frac{dy}{dt}=a(t)y\\
 \frac{1}{y}\frac{dy}{dt}=a(t)\\
 \int \frac{1}{y}dy = \int a(t)dt$$    
 
+看一个具体的线性齐次微分方程的例子：
+$$\frac{dy}{dt}=\frac{-ty}{1+t^2}\\
+\frac{1}{y} \frac{dy}{dt} = \frac{-t}{1+t^2} \\
+\int \frac{1}{y} dy = \int \frac{-t}{1+t^2} dt \\
+ln(|y|) = -\frac{1}{2}ln(1+t^2) + C\\
+ln(|y|) = ln(\frac{1}{1+t^2}) + C\\
+|y| = (\frac{1}{\sqrt(1+t^2)})(e^C)\\
+y = (\frac{1}{\sqrt(1+t^2)})(C)\\
+y(t) = \frac{C}{\sqrt(1+t^2)}}$$  
+
+斜率场和若干个解的图如：  
+
+```
+    tdomain = np.linspace(-3,3,30)
+    ydomain = np.linspace(-5,5,30)
+    
+    y = Function('y')
+    formula = -1*t*y(t)/(1+t**2)
+    
+    fg = plotSlopeField(tdomain,ydoman,formula,[(0,4),(0,3),(0,2),(0,1),(0,-1),(0,-2),(0,-3),(0,-4)])
+    
+    fg.show()
+```
+
+![09-01slopeFieldofHomo](images/09-01slopeFieldofHomo.png)
+
+可以看出其各个解之间的差距只是$$k$$值得不同。如果获得了一个解，便可以通过乘以一个值得方法来获得任何一个其他解。  
+
+### **齐次微分方程的线性原理（The Linearity Principle for Homogeneous Equations）**  
+如果$$y_h(t)$$是一个齐次线性微分方程$$\frac{dy}{dt}=a(t)y$$的解，那么将其乘以任何一个常数$$k$$获得的$$y_k(t)=ky_h(t)$$也同样是一个解。  
+
+检该原理非常简单：
+
+$$\frac{dy_k}{dt}=k(\frac{dy_h}{dt})\\
+\qquad = k(a(t)y_h)\\
+\qquad = a(t)(ky_h)\\
+\qquad = a(t)(y_k(t))$$  
+
+
+
 
 
 
