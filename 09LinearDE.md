@@ -40,9 +40,9 @@ $$\frac{dy}{dt}=a(t)y\\
 $$\frac{dy}{dt}=\frac{-ty}{1+t^2}\\
 \frac{1}{y} \frac{dy}{dt} = \frac{-t}{1+t^2} \\
 \int \frac{1}{y} dy = \int \frac{-t}{1+t^2} dt \\
-ln(|y|) = -\frac{1}{2}ln(1+t^2) + C\\
-ln(|y|) = ln(\frac{1}{1+t^2}) + C\\
-|y| = (\frac{1}{\sqrt{1+t^2}})(e^C)\\
+ln(y) = -\frac{1}{2}ln(1+t^2) + C\\
+ln(y) = ln(\frac{1}{1+t^2}) + C\\
+y = (\frac{1}{\sqrt{1+t^2}})(e^C)\\
 y = (\frac{1}{\sqrt{1+t^2}})(C)\\
 y(t) = \frac{C}{\sqrt{1+t^2}}$$  
 
