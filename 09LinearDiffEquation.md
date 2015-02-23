@@ -173,8 +173,7 @@ $$\frac{dy}{dt}=2ty-\frac{6}{t^2}-\frac{6}{t^3}\\
 $$\frac{dy}{dt}= -2y+3e^{-t/2}$$  
 对应的齐次方程为：
 $$\frac{dy}{dt}=-2y$$  
-其一般解为：
-$$y(t)=Ce^{-2t}$$  
+其一般解为：$$y(t)=Ce^{-2t}$$  
 
 对非齐次方程进行变换
 $$\frac{dy}{dt}+2y=3e^{-\frac{t}{2}}$$
@@ -182,10 +181,10 @@ $$\frac{dy}{dt}+2y=3e^{-\frac{t}{2}}$$
 
 猜测：$$y_p=\alpha e^{-t/2}$$
 $$\frac{dy_p}{dt}+2y_p\\
-\qquad = -\frac{alpha}{2}e^{-\frac{t}{2}}+2\alpha e^{-\frac{t}{2}}\\
+\qquad = -\frac{\alpha}{2}e^{-\frac{t}{2}}+2\alpha e^{-\frac{t}{2}}\\
 \qquad = \frac{3}{2}\alpha e^{-\frac{t}{2}}$$  
 在$$\alpha = 2$$时，$$y_p(t)= 2e^{-\frac{t}{2}}$$为非齐次方程的一个特殊解，因此获得一般解为：
-$$2e^{-\frac{t}{2}}+Ce^{-2t}$$   
+$$y(t)=2e^{-\frac{t}{2}}+Ce^{-2t}$$   
 
 看一看方程的解和斜率场,洋红色的一条线代表的是上面我们求出的特殊解，注意到所有的解在随着$$t\rightarrow \infty$$时，都在趋近于我们求出来的特殊解：
 ```
@@ -197,5 +196,30 @@ $$2e^{-\frac{t}{2}}+Ce^{-2t}$$
 ```
 ![09-03GuessEx1](images/09-03GuessEx1.png)  
 
+例子2：
 
+$$\frac{dy}{dt}=-y+2cos(4t)$$  
+对应齐次方程的一般解为：$$y_h(t)=Ce^{-t}$$  
 
+猜测:$$y_p = \alpha cos4t + \beta sin4t$$
+$$\frac{y_p}{t}+y\\
+\qquad = 4\alpha sin4t -4\beta cos4t + \alpha cos4t + \beta sin4t\\
+\qquad = (4\alpha + \beta)sin4t + (\alpha - 4\beta)cos4t$$  
+要使得其等于$$2cos4t$$，获得方程组：
+$$\begin{cases} 4\alpha+\beta = 0\\ \alpha-4\beta =2 \end{cases}\\
+\implies\\
+\begin{cases} \alpha = \frac{2}{17} \\ \beta = \frac{8}{17} \end{cases}$$
+因此获得非齐次方程的特殊解：
+$$y_p(t) = \frac{2}{17}cos4t + \frac{8}{17}sin4t$$  
+方程的一般解为：
+$$y(t)=\frac{2}{17}cos4t + \frac{8}{17}sin4t+Ce^{-t}$$   
+
+看一看方程的解和斜率场,蓝色的一条线代表的是上面我们求出的特殊解，注意到所有的解在随着$$t\rightarrow \infty$$时，都在趋近于我们求出来的特殊解，因此这个特殊解又称为**稳态解（steady state solution）**：
+```
+    tdomain = np.linspace(-3,3,30)
+    ydomain = np.linspace(-2,8,30)
+    formula = -2*y(t)+3*sympy.E**(-1*t/2)
+    fg = plotSlopeField(tdomain,ydomain,formula,[(0,0),(-1,0),(-2,0),(-3,0),(0,2),(0,3)])
+    fg.show()
+```
+![09-04GuessEx2](images/09-04GuessEx2.png) 
