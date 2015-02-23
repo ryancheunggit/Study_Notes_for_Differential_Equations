@@ -1,3 +1,5 @@
+# 9.1 Principle of linear differential equations
+
 import sympy
 from sympy.abc import t, a, C
 from sympy import Function, Derivative, dsolve, Eq, solve
@@ -44,3 +46,11 @@ for p in points:
         # limiting the axes
     plt.xlim([tdomain[0],tdomain[-1]])
     plt.ylim([ydomain[0],ydomain[-1]])
+
+# 9.2 method of lucky guess
+
+tdomain = np.linspace(-3,3,30)
+ydomain = np.linspace(-2,8,30)
+formula = -2*y(t)+3*sympy.E**(-1*t/2)
+fg = plotSlopeField(tdomain,ydomain,formula,[(0,0),(-1,0),(-2,0),(-3,0),(0,2),(0,3)])
+fg.show()
