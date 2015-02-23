@@ -223,3 +223,26 @@ $$y(t)=\frac{2}{17}cos4t + \frac{8}{17}sin4t+Ce^{-t}$$
     fg.show()
 ```
 ![09-04GuessEx2](images/09-04GuessEx2.png) 
+
+
+例子3：
+$$\frac{dy}{dt}=-3y+2e^{-3t}$$
+相应齐次方程的一般解为:$$Ce^{-3t}$$ 
+猜测$$y_p(t)=\alpha e^{-3t}$$，将不会有效果，我们永远不应该猜测齐次方程的解为对应非齐次方程的解。
+而是猜测：$$y_p(t)=\alpha t e^{-3t}$$  
+$$\frac{dy_p}{dt}+3y_p = \alpha(e^{-3t}-3te^{-3t}) + 3\alpha t e^{-3t}\\
+\qquad = \alpha e^{-3t}$$ 
+要其为$$2e^{-3t}$$，则需要$$\alpha = 2$$ 
+
+因此特殊解为：$$y_p(t) = 2te^{-3t}$$
+一般解为：$$(k+2t)e^{-3t}$$
+
+同样看看图：
+```
+tdomain = np.linspace(-1,1,30)
+ydomain = np.linspace(-4,4,30)
+formula = -3*y(t)+2*sympy.E**(-3*t)
+fg = plotSlopeField(tdomain,ydomain,formula,[(0,0),(0,-2),(0,1),(0,2)])
+```
+![09-05GuessEx3](images/09-05GuessEx3.png) 
+

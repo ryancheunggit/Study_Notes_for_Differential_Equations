@@ -60,3 +60,8 @@ tdomain = np.linspace(0,8,30)
 ydomain = np.linspace(-2,2,30)
 formula = -1*y(t)+2*sympy.cos(4*t)
 fg = plotSlopeField(tdomain,ydomain,formula,[(0,0),(0,1),(0,2),(0,-1),(0,-2)])
+
+tdomain = np.linspace(-1,1,30)
+ydomain = np.linspace(-4,4,30)
+formula = -3*y(t)+2*sympy.E**(-3*t)
+fg = plotSlopeField(tdomain,ydomain,formula,[(0,0),(0,-2),(0,1),(0,2)])
