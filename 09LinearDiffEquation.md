@@ -246,3 +246,57 @@ $$\frac{dy_p}{dt}+3y_p = \alpha (e^{-3t}-3te^{-3t}) + 3\alpha t e^{-3t}\\
 ```
 ![09-05GuessEx3](images/09-05GuessEx3.png) 
 
+##** 9.3 神奇函数(积分因子 integrating factor)**  
+
+将非齐次方程$$\frac{dy}{dt}=a(t)y+b(t)$$进行改写为$$\frac{dy}{dt}+g(t)y=b(t)$$  
+即，令$$g(t) = -a(t)$$  
+
+注意到，此时微分方程的左边$$\frac{dy}{dt}+g(t)y$$"看上去像"是用乘积法则求导后的结果。
+
+此时给方程两边同时乘上一个神奇的函数$$\mu (t)$$获得：
+$$\mu (t) (\frac{dy}{dt} + g(t)y) = \frac{d}{dt}(\mu(t)y)\\
+\mu (t)\frac{dy}{dt} + \mu (t) g(t)y = \mu (t) \frac{dy}{dt} + \frac{d\mu}{dt}y\\
+\frac{d\mu}{dt} = \mu (t) g(t)\\
+\frac{d\mu}{dt} = g(t) \mu$$  
+
+得到一个线性的齐次方程
+
+其解为$$\mu (t) = ke^{\int g(t)dt}$$，令$$k=1$$获得一个满足条件的函数$$\mu (t) = e^{\int g(t)dt}$$   
+
+小结：
+1. 给定一个非齐次微分方程：$$\frac{dy}{dt}+g(t)$$  
+2. 令积分因子为：$$\mu (t) = e^{\int g(t)dt}$$  
+3. 方程两边同时乘以积分因子获得：$$\frac{d}{dt}(\mu (t)y)=\mu (t)b(t)$$  
+4. 两边同时针对$$t$$进行积分：$$\mu (t)y = \int \mu(t)b(t)dt$$  
+
+例子：
+方程：$$\frac{dy}{dt}= \frac{y}{t}+tcost$$
+积分因子为：$$\mu (t) = e^{\int -\frac{1}{t}dt} = e^{-ln(t)} = e^{ln(\frac{1}{t})}=\frac{1}{t}$$  
+两边同乘积分因子：
+$$\frac{1}{t}\frac{dy}{dt} - \frac{1}{t} \frac{y}{t} = cost\\
+\frac{1}{t}(\frac{dy}{dt}) - \frac{1}{t^2}y = cost\\
+\frac{d}{dt}(\frac{1}{t}y)=cost$$
+
+两边同时积分：
+$$\frac{1}{t}y = sint + k\\
+y(t) = tsint + kt$$
+
+```
+    formula = y(t)/t+t*sympy.cos(t)
+    tdomain = np.linspace(-10,10,30)
+    ydomain = np.linspace(-30,30,30)
+    fg = plotSlopeField(tdomain,ydomain,formula,[(math.pi/2.0,math.pi/2.0),(math.pi/2.0,math.pi),(math.pi/2.0,0)])
+    
+```
+从上到下分别为$$k = 1, k = 0, k = -1$$的解
+![09-06FactorPlot1](images/09-06FactorPlot1.png)
+
+
+
+
+
+
+
+
+
+
