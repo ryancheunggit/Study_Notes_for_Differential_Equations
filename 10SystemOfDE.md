@@ -84,7 +84,7 @@ $$\frac{dF}{dt} = - F + 0.9RF$$
 	formulaR = 2*R(t) - 1.2*R(t)*F(t)
 	formulaF = -1*F(t) + 0.9*R(t)*F(t)
 
-	tdomain = np.array([i*0.01 for i in range(32000)])
+	tdomain = np.array([i*0.0005 for i in range(32000)])
 	dt = 0.0005
 	Rrange = [1.0]
 	Frange = [0.5]

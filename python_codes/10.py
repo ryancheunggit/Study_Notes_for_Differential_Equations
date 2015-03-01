@@ -31,7 +31,7 @@ eqs = [Eq(Derivative(R(t),t), formulaR),
 
 # try numerical method
 
-tdomain = np.array([i*0.01 for i in range(32000)])
+tdomain = np.array([i*0.0005 for i in range(32000)])
 dt = 0.0005
 
 Rrange = [1.0]
@@ -87,3 +87,96 @@ ax.set_xlabel(r'$R(t)$')
 ax.set_ylabel(r'$F(t)$')
 ax.set_zlabel(r'$t$')
 plt.show()
+
+
+# exercise 4
+
+R = Function('R')
+F = Function('F')
+
+formulaR = 2*(1-R(t)/3.0)*R(t) - R(t)*F(t)
+formulaF = -2*F(t) + 4*R(t)*F(t)
+
+Rrange = [1.0]
+Frange = [0.5]
+
+tdomain = np.array([i*0.01 for i in range(32000)])
+dt = 0.0005
+
+for t in tdomain[1:]:
+    dR = formulaR.subs({'R(t)':Rrange[-1] , 'F(t)': Frange[-1]})
+    dF = formulaF.subs({'R(t)':Rrange[-1] , 'F(t)': Frange[-1]})
+    Rrange.append(Rrange[-1]+dt*dR)
+    Frange.append(Frange[-1]+dt*dF)
+
+Trange = reduceSize(tdomain, 100)
+Rrange = reduceSize(Rrange, 100)
+Frange = reduceSize(Frange, 100)
+
+# component graph!
+plt.plot(Trange,Rrange, 'lightblue',Trange,Frange, 'darkblue')
+
+# solution curve in phase plane
+plt.plot(Rrange, Frange)
+
+
+# ex 5
+
+y = Function('y')
+v = Function('v')
+
+formulay = v(t)
+formulav = -2*y(t)
+
+yrange = [2.0]
+vrange = [0.45]
+
+tdomain = np.array([i*0.0005 for i in range(32000)])
+dt = 0.0005
+
+for t in tdomain[1:]:
+    dy = formulay.subs({'v(t)':vrange[-1]})
+    dv = formulav.subs({'y(t)':yrange[-1]})
+    yrange.append(yrange[-1]+dt*dy)
+    vrange.append(vrange[-1]+dt*dv)
+
+Trange = reduceSize(tdomain, 100)
+yrange = reduceSize(yrange, 100)
+vrange = reduceSize(vrange, 100)
+
+# component graph!
+plt.plot(Trange,yrange, 'lightblue',Trange,vrange, 'darkblue')
+
+# solution curve in phase plane
+plt.plot(yrange, vrange)
+
+
+# ps
+
+R = Function('R')
+F = Function('F')
+
+formulaR = 2*(1-R(t)/3.0)*R(t) - R(t)*F(t)
+formulaF = -16*F(t) + 4*R(t)*F(t)
+
+Rrange = [8.0]
+Frange = [1.0]
+
+tdomain = np.array([i*0.01 for i in range(32000)])
+dt = 0.0005
+
+for t in tdomain[1:]:
+    dR = formulaR.subs({'R(t)':Rrange[-1] , 'F(t)': Frange[-1]})
+    dF = formulaF.subs({'R(t)':Rrange[-1] , 'F(t)': Frange[-1]})
+    Rrange.append(Rrange[-1]+dt*dR)
+    Frange.append(Frange[-1]+dt*dF)
+
+Trange = reduceSize(tdomain, 100)
+Rrange = reduceSize(Rrange, 100)
+Frange = reduceSize(Frange, 100)
+
+# component graph!
+plt.plot(Trange,Rrange, 'lightblue',Trange,Frange, 'darkblue')
+
+# solution curve in phase plane
+plt.plot(Rrange, Frange)
