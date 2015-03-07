@@ -84,7 +84,7 @@ def vectorField(fR, fF, Rdomain, Fdomain, points = [], steps = 5):
             r.append(int(fR.subs({'R(t)': Rvals[-1], 'F(t)':Fvals[-1]})))
             f.append(int(fF.subs({'R(t)': Rvals[-1], 'F(t)':Fvals[-1]})))
             pr, pf = pr+r[-1], pf+f[-1]
-        plt.quiver(Rvals,Fvals,r,f, color = colors[i%5])
+            plt.arrow(Rvals[-1],Fvals[-1],r[-1],f[-1], head_width = 0.2)
     plt.xlim([Rdomain[0],Rdomain[-1]])
     plt.ylim([Fdomain[0],Fdomain[-1]])
     return fig
@@ -98,4 +98,4 @@ formulaF = -1*R(t)
 Rdomain = np.linspace(-9,9,30)
 Fdomain = np.linspace(-9,9,30)
 
-fg2 = vectorField(formulaR, formulaF, Rdomain, Fdomain, points = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1),(0,2),(2,2),(2,0),(2,-2),(0,-2),(-2,-2),(-2,0),(-2,2)], steps = 5)
+fg2 = vectorField(formulaR, formulaF, Rdomain, Fdomain, points = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)], steps = 5)
