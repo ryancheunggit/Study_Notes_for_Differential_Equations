@@ -7,7 +7,7 @@ import matplotlib as mpl
 from mpl_toolkits.mplot3d import Axes3D
 
 
-def numericalApproxForTwo(R, F, fR, fF, R0, F0, dt = 0.0005, steps = 300):
+def numericalApproxForTwo(fR, fF, R0, F0, dt = 0.0005, steps = 300):
     def reduceSize(Range, p):
         return [Range[i] for i in range(len(Range)) if i%p == 0]
 
@@ -34,7 +34,7 @@ F = Function('F')
 formulaR = F(t)
 formulaF = -4*R(t)
 
-Tvals,Rvals,Fvals = numericalApproxForTwo(R, F, formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 12500)
+Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 12500)
 
 # component graph!
 plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
