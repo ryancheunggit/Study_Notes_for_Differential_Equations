@@ -1,13 +1,8 @@
 ## 向量场  
 回顾上节的弹簧-重物系统的一个具体例子： 
-$$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$
+$$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$  
 
-如果我们将注意力局限在$$y-v$$平面上：
-+ 则$$(y(t),v(t))$$表示的是平面上的一个点
-+ 另新的函数$$Y(t)=$$
-+ 方程中$$\frac{dv}{dt}$$表示的是$$v$$随时间的变化
-
-
+看一下上面微分方程组的表现：
 
 ```
     import numpy as np
@@ -19,7 +14,7 @@ $$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$
     from mpl_toolkits.mplot3d import Axes3D
     
     
-    def numericalApproxForTwo(R, F, fR, fF, R0, F0, dt = 0.0005, steps = 300):
+    def numericalApproxForTwo(fR, fF, R0, F0, dt = 0.0005, steps = 300):
         def reduceSize(Range, p):
             return [Range[i] for i in range(len(Range)) if i%p == 0]
     
@@ -44,9 +39,9 @@ $$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$
     F = Function('F')
     
     formulaR = F(t)
-    formulaF = -4*R(t)
+    formulaF = -1*R(t)
     
-    Tvals,Rvals,Fvals = numericalApproxForTwo(R, F, formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 12500)
+    Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 12500)
     
     # component graph!
     plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
@@ -57,3 +52,55 @@ $$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$
 ![11-01CompGraph](images/11-01CompGraph.png)
 
 ![11-02PhasePlane](images/11-02PhasePlane.png)
+
+如果用向量表示法来看该微分方程系统。
+令向量$$Y(t)=\begin{pmatrix} y(t)\\v(t) \end{pmatrix}$$    
+想象一个$$y-v$$平面，给定一个$$t$$值，$$Y(t)$$则对应的是平面中的一点。对其求导获得$$\frac{dY}{dt} = \begin{pmatrix} \frac{dy}{dt} \\ \frac{dv}{dt} \end{pmatrix}$$，为微分方程组的左边。   
+令$$F$$是向量$$Y$$的一个函数，且$$F(Y) = F(\begin{pmatrix} y \\ v \end{pmatrix}) = \begin{pmatrix} v \\ -y \end{pmatrix}$$，为微分方程组的右边。   
+因而可以将原微分方程组改写为：$$\frac{dY}{dt} = F(Y)$$，即将一个原本为两个标量的微分方程组，变成了一个向量的微分方程。
+
+用导数的“随着输入的微小变化，输出所相应的变化”理解来看，上面方程$$\frac{dY}{dt} = F(Y)$$描述的是，随着$$t$$的微小变化，$$y-v$$平面中位置的相应变化。
+
+据几个具体点，计算其导数：
+$$F(\begin{pmatrix} 1\\0 \end{pmatrix}) = \begin{pmatrix}0\\-1\end{pmatrix}$$  
+$$F(\begin{pmatrix} 0\\1 \end{pmatrix}) = \begin{pmatrix}1\\0\end{pmatrix}$$  
+$$F(\begin{pmatrix} -1\\-1 \end{pmatrix}) = \begin{pmatrix}-1\\0\end{pmatrix}$$  
+导数的结果也是向量，且长度根据输入值得不同而不同。在$$y-v$$平面上绘制出不同位置出的导数所代表的向量，获得**向量场(Vector Field)**:
+
+
+
+
+如果只考虑向量的方向，我们获得的便是**方向场(Direction Field)**：
+```
+    def directionField(fR, fF, Rdomain, Fdomain):
+        fig = plt.figure(num=1)
+        Rvals,Fvals = np.meshgrid(Rdomain,Fdomain)
+        r = np.array([[fR.subs({'R(t)':rval, 'F(t)':fval}) for rval in Rdomain] for fval in Fdomain],dtype = 'float')
+        f = np.array([[fF.subs({'R(t)':rval, 'F(t)':fval}) for rval in Rdomain] for fval in Fdomain],dtype = 'float')
+        n = np.sqrt(r**2+f**2)
+        r, f = r/n, f/n
+        plt.quiver(Rvals, Fvals, r, f)
+        plt.xlabel(r"$R$")
+        plt.ylabel(r"$F$")
+        plt.axhline(0,0,1,linewidth = 2, color = 'black')
+        plt.axvline(0,0,1,linewidth = 2, color = 'black')
+        return fig
+    
+    R = Function('R')
+    F = Function('F')
+    
+    formulaR = F(t)
+    formulaF = -1*R(t)
+    
+    Rdomain = np.linspace(-3,3,30)
+    Fdomain = np.linspace(-3,3,30)
+    
+    fg1 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+    fg1.show()
+```
+![11-0311-03DirectionField](images/11-03DirectionField.png)
+
+
+
+
+
