@@ -67,6 +67,37 @@ $$F(\begin{pmatrix} 0\\1 \end{pmatrix}) = \begin{pmatrix}1\\0\end{pmatrix}$$
 $$F(\begin{pmatrix} -1\\-1 \end{pmatrix}) = \begin{pmatrix}-1\\0\end{pmatrix}$$  
 导数的结果也是向量，且长度根据输入值得不同而不同。在$$y-v$$平面上绘制出不同位置出的导数所代表的向量，获得**向量场(Vector Field)**:
 
+```
+    def vectorField(fR, fF, Rdomain, Fdomain, points = [], steps = 5):
+        fig = plt.figure(num=1)
+        colors = ['red', 'green', 'blue', 'orange', 'black']
+        for i, point in enumerate(points):
+            Rvals, Fvals, r,f = [], [], [], []
+            pr, pf = point[0], point[1]
+            for step in range(steps):
+                Rvals.append(pr)
+                Fvals.append(pf)
+                r.append(int(fR.subs({'R(t)': Rvals[-1], 'F(t)':Fvals[-1]})))
+                f.append(int(fF.subs({'R(t)': Rvals[-1], 'F(t)':Fvals[-1]})))
+                pr, pf = pr+r[-1], pf+f[-1]
+                plt.arrow(Rvals[-1],Fvals[-1],r[-1],f[-1], head_width = 0.2)
+        plt.xlim([Rdomain[0],Rdomain[-1]])
+        plt.ylim([Fdomain[0],Fdomain[-1]])
+        return fig
+    
+    R = Function('R')
+    F = Function('F')
+    
+    formulaR = F(t)
+    formulaF = -1*R(t)
+    
+    Rdomain = np.linspace(-9,9,30)
+    Fdomain = np.linspace(-9,9,30)
+    
+    fg2 = vectorField(formulaR, formulaF, Rdomain, Fdomain, points = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)], steps = 5)
+```
+![11-04VectorField](images/11-04VectorField.png)
+
 
 
 
@@ -98,7 +129,7 @@ $$F(\begin{pmatrix} -1\\-1 \end{pmatrix}) = \begin{pmatrix}-1\\0\end{pmatrix}$$
     fg1 = directionField(formulaR, formulaF,Rdomain, Fdomain)
     fg1.show()
 ```
-![11-0311-03DirectionField](images/11-03DirectionField.png)
+![11-03DirectionField](images/11-03DirectionField.png)
 
 
 
