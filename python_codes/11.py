@@ -41,3 +41,61 @@ plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
 
 # solution curve in phase plane
 plt.plot(Rvals, Fvals)
+
+# direction Field
+
+def directionField(fR, fF, Rdomain, Fdomain):
+    fig = plt.figure(num=1)
+    Rvals,Fvals = np.meshgrid(Rdomain,Fdomain)
+    r = np.array([[fR.subs({'R(t)':rval, 'F(t)':fval}) for rval in Rdomain] for fval in Fdomain],dtype = 'float')
+    f = np.array([[fF.subs({'R(t)':rval, 'F(t)':fval}) for rval in Rdomain] for fval in Fdomain],dtype = 'float')
+    n = np.sqrt(r**2+f**2)
+    r, f = r/n, f/n
+    plt.quiver(Rvals, Fvals, r, f)
+    plt.xlabel(r"$R$")
+    plt.ylabel(r"$F$")
+    plt.axhline(0,0,1,linewidth = 2, color = 'black')
+    plt.axvline(0,0,1,linewidth = 2, color = 'black')
+    return fig
+
+R = Function('R')
+F = Function('F')
+
+formulaR = F(t)
+formulaF = -1*R(t)
+
+Rdomain = np.linspace(-3,3,30)
+Fdomain = np.linspace(-3,3,30)
+
+fg1 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+fg1.show()
+
+# vector field
+
+def vectorField(fR, fF, Rdomain, Fdomain, points = [], steps = 5):
+    fig = plt.figure(num=1)
+    colors = ['red', 'green', 'blue', 'orange', 'black']
+    for i, point in enumerate(points):
+        Rvals, Fvals, r,f = [], [], [], []
+        pr, pf = point[0], point[1]
+        for step in range(steps):
+            Rvals.append(pr)
+            Fvals.append(pf)
+            r.append(int(fR.subs({'R(t)': Rvals[-1], 'F(t)':Fvals[-1]})))
+            f.append(int(fF.subs({'R(t)': Rvals[-1], 'F(t)':Fvals[-1]})))
+            pr, pf = pr+r[-1], pf+f[-1]
+        plt.quiver(Rvals,Fvals,r,f, color = colors[i%5])
+    plt.xlim([Rdomain[0],Rdomain[-1]])
+    plt.ylim([Fdomain[0],Fdomain[-1]])
+    return fig
+
+R = Function('R')
+F = Function('F')
+
+formulaR = F(t)
+formulaF = -1*R(t)
+
+Rdomain = np.linspace(-9,9,30)
+Fdomain = np.linspace(-9,9,30)
+
+fg2 = vectorField(formulaR, formulaF, Rdomain, Fdomain, points = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1),(0,2),(2,2),(2,0),(2,-2),(0,-2),(-2,-2),(-2,0),(-2,2)], steps = 5)
