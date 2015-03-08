@@ -173,3 +173,18 @@ for point in points:
 
 fg6.show()
 
+
+
+# exercise 2
+R = Function('R')
+F = Function('F')
+
+formulaR = F(t)
+formulaF = R(t)
+
+Rdomain = np.linspace(-5,5,30)
+Fdomain = np.linspace(-5,5,30)
+
+fg7 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+
+fg7.show()

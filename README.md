@@ -9,5 +9,6 @@ TO DO List：
 + Feb.20 Module8 Bifurcations    
 + Feb.21 Module9 Linear Differential Equations    
 + Feb.28 Module10 Systems of Differential Equations    
-+ Mar.07 Module11 Vector Fields, Direction Fields, Phase Plane    
++ Mar.07 Module11 Vector Fields, Direction Fields, Phase Plane      
++ Mar.08 Module12 Damped Harmonic Oscillation      
 + 

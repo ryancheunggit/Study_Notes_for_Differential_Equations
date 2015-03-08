@@ -215,3 +215,5 @@ $$\begin{cases} \frac{dx}{dt} = x(2-x-y) \\ \frac{dy}{dt} = 3(3-y-2x) - 2xy \end
 
 ![11-08TwoSolutions](images/11-08TwoSolutions.png)
 
+
+
