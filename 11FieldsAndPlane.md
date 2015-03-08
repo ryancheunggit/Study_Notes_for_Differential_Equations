@@ -98,10 +98,7 @@ $$F(\begin{pmatrix} -1\\-1 \end{pmatrix}) = \begin{pmatrix}-1\\0\end{pmatrix}$$
 ```
 ![11-04VectorField](images/11-04VectorField.png)
 
-
-
-
-如果只考虑向量的方向，我们获得的便是**方向场(Direction Field)**：
+如果只考虑向量的方向(均标准化为同样的长度)，绘制出的便是**方向场(Direction Field)**：
 ```
     def directionField(fR, fF, Rdomain, Fdomain):
         fig = plt.figure(num=1)
@@ -131,7 +128,50 @@ $$F(\begin{pmatrix} -1\\-1 \end{pmatrix}) = \begin{pmatrix}-1\\0\end{pmatrix}$$
 ```
 ![11-03DirectionField](images/11-03DirectionField.png)
 
+## 自治方程组的向量表示
 
+考虑一个方程组：
+$$\begin{cases} \frac{dx}{dt} = f(x,y) \\ \frac{dy}{dt} = g(x,y) \end{cases}$$  
+根据微分方程组的右边定义一个向量场：
+$$F(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} f(x,y) \\ g(x,y) \end{pmatrix}$$    
+我们定义一个关于$$t$$的一个输出为向量的函数：
+$$Y(t) = \begin{pmatrix} x(t)\\y(t) \end{pmatrix}$$    
+将原本的方程组改写为：
+$$\frac{dY}{dt} = F(Y)$$   
 
+例子:
+$$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - 0.3y \end{cases}$$  
+
+方程组对应的向量场为：
+$$F(Y) = F(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} -y \\ x - 0.3y \end{pmatirx}$$  
+
+假设初值为$$F(\begin{pmatrix} 0 \\ 1.5 \end{pmatrix})$$
+则对应解的成分图为：
+```
+    R = Function('R')
+    F = Function('F')
+    
+    formulaR = -1*F(t)
+    formulaF = R(t)-0.3*F(t)
+    
+    Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 0, 1.5, dt = 0.0005, steps = 25000)
+    
+    # component graph!
+    plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
+```
+![11-06ConGraph](images/11-06ConGraph.png)
+将该解绘制在方向场上：
+
+```
+    Rdomain = np.linspace(-2,2,30)
+    Fdomain = np.linspace(-2,2,30)
+    
+    fg3 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+    plt.plot(Rvals, Fvals)
+    
+    fg3.show()
+```
+
+![11-05SolutionCurveInDField](images/11-05SolutionCurveInDField.png)
 
 
