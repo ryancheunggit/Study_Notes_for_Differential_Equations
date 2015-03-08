@@ -1,6 +1,6 @@
 ## 向量场  
 回顾上节的弹簧-重物系统的一个具体例子： 
-$$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$  
+$$\begin{cases} \frac{dy}{dt} = v \\ \frac{dv}{dt} = -y \end{cases}$$  
 
 看一下上面微分方程组的表现：
 
@@ -41,7 +41,7 @@ $$\begin{cases} \frac{dy}{dt} = v\\ \frac{dv}{dt} = -y \end{cases}$$
     formulaR = F(t)
     formulaF = -1*R(t)
     
-    Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 12500)
+    Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 20000)
     
     # component graph!
     plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
@@ -139,7 +139,7 @@ $$Y(t) = \begin{pmatrix} x(t)\\y(t) \end{pmatrix}$$
 将原本的方程组改写为：
 $$\frac{dY}{dt} = F(Y)$$   
 
-例子:
+# 例子:
 $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - 0.3y \end{cases}$$  
 
 方程组对应的向量场为：
@@ -173,5 +173,34 @@ $$F(Y) = F(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} -y \\ x - 0.3
 ```
 
 ![11-05SolutionCurveInDField](images/11-05SolutionCurveInDField.png)
+
+注意到：方向场之间能揭示，随着时间变化，方程组解的走势。而向量场在此基础上还能揭示，解变化的速度（向量的长度）。
+
+# 例子
+考虑一个两种生物竞争的环境
+$$\begin{cases} \frac{dx}{dt} = 2x(1-\frac{x}{2}) -xy \\ \frac{dy}{dt} = 3y(1-\frac{y}{3}) - 2xy \end{cases}$$   
+可以理解为两种生物正常繁殖是依循罗吉斯特人口模型，而两者之间的相互作用会导致数量的下降。竞争中生物$$y$$受到的负面影响是生物$$x$$的两倍。  
+
+首先尝试计算平衡解，将方程组改写为：
+$$\begin{cases} \frac{dx}{dt} = x(2-x-y) \\ \frac{dy}{dt} = 3(3-y-2x) - 2xy \end{cases}$$   
+不难得出3个平衡解为:$$(0,0),(0,3),(2,0),(1,1)$$  
+注意到$$(0,3),(2,0)$$这两个解是只存在一种生物的罗吉斯特模型的解。
+
+方向场：
+```
+    R = Function('R')
+    F = Function('F')
+    
+    formulaR = 2*F(t)*(1- F(t)/2) - F(t)*R(t)
+    formulaF = 3*R(t)*(1- R(t)/3) - 2*R(t)*F(t)  
+    
+    Rdomain = np.linspace(0,4,30)
+    Fdomain = np.linspace(0,4,30)
+    
+    fg5 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+```
+![11-07TwoSpecies](images/11-07TwoSpecies.png)  
+
+ 
 
 
