@@ -32,9 +32,9 @@ R = Function('R')
 F = Function('F')
 
 formulaR = F(t)
-formulaF = -4*R(t)
+formulaF = -1*R(t)
 
-Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 12500)
+Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.0005, steps = 20000)
 
 # component graph!
 plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
@@ -121,3 +121,35 @@ fg3 = directionField(formulaR, formulaF,Rdomain, Fdomain)
 plt.plot(Rvals, Fvals)
 
 fg3.show()
+
+
+# ex2
+
+R = Function('R')
+F = Function('F')
+
+formulaR = F(t)
+formulaF = 3*R(t) - R(t)**3 -2*F(t)
+
+Rdomain = np.linspace(-4,4,30)
+Fdomain = np.linspace(-5,5,30)
+
+fg4 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+
+# ex
+R = Function('R')
+F = Function('F')
+
+formulaR = 2*R(t)*(1- R(t)/2.0) - F(t)*R(t)
+formulaF = 3*F(t)*(1- F(t)/3.0) - 2*R(t)*F(t)
+
+Rdomain = np.linspace(0,4,30)
+Fdomain = np.linspace(0,4,30)
+
+fg5 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+points = [(0.3,0.2),(0.5,0.2)]
+for point in points:
+    Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, point[0], point[1], dt = 0.001, steps = 20000)
+    plt.plot(Rvals, Fvals)
+
+fg5.show()
