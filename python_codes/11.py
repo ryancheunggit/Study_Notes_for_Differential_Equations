@@ -99,3 +99,25 @@ Rdomain = np.linspace(-9,9,30)
 Fdomain = np.linspace(-9,9,30)
 
 fg2 = vectorField(formulaR, formulaF, Rdomain, Fdomain, points = [(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1)], steps = 5)
+
+
+#
+
+R = Function('R')
+F = Function('F')
+
+formulaR = -1*F(t)
+formulaF = R(t)-0.3*F(t)
+
+Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 0, 1.5, dt = 0.0005, steps = 25000)
+
+# component graph!
+plt.plot(Tvals,Rvals, 'lightblue',Tvals,Fvals, 'darkblue')
+
+Rdomain = np.linspace(-2,2,30)
+Fdomain = np.linspace(-2,2,30)
+
+fg3 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+plt.plot(Rvals, Fvals)
+
+fg3.show()
