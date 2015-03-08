@@ -102,11 +102,11 @@ $$\begin{cases} y_2(t) = e^{-t} \\ v_2(t) = -e^{-t}\end{cases}$$
 写成向量函数的形式为： 
 $$Y_1(t) = \begin{pmatrix} e^{-2t} \\ -2e^{-2t} \end{pmatrix}$$
 对应初值为：
-$$Y_1(0) = 1 \\ -2 \end{pmatrix}$$
+$$\begin{pmatrix} Y_1(0) = 1 \\ -2 \end{pmatrix}$$
 
 $$Y_2(t) = \begin{pmatrix} e^{-t} \\ -e^{-t} \end{pmatrix}$$
 对应初值为：
-$$Y_2(0) = 1 \\ -1 \end{pmatrix}$$
+$$\begin{pmatrix} Y_2(0) = 1 \\ -1 \end{pmatrix}$$
 
 下图中，有两个解对应于上面这两个，是哪两个？
 ![12-04DHOThreeInitials](images/12-04DHOThreeInitials.png)
