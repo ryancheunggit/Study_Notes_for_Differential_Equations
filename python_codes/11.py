@@ -147,9 +147,29 @@ Rdomain = np.linspace(0,4,30)
 Fdomain = np.linspace(0,4,30)
 
 fg5 = directionField(formulaR, formulaF,Rdomain, Fdomain)
-points = [(0.3,0.2),(0.5,0.2)]
+points = [(0.3,0.2),(0.5,0.2),(2.0,4.0),(4.0,2.0),(3,4),(4,3),(0.3,0.4),(0.2,0.2)]
 for point in points:
     Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, point[0], point[1], dt = 0.001, steps = 20000)
     plt.plot(Rvals, Fvals)
 
 fg5.show()
+
+
+# exercise 1
+R = Function('R')
+F = Function('F')
+
+formulaR = R(t) + 2*F(t)
+formulaF = -1*F(t)
+
+Rdomain = np.linspace(-5,5,30)
+Fdomain = np.linspace(-5,5,30)
+
+fg6 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+points = [(-2,2)]
+for point in points:
+    Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, point[0], point[1], dt = 0.001, steps = 20000)
+    plt.plot(Rvals, Fvals)
+
+fg6.show()
+

@@ -201,6 +201,17 @@ $$\begin{cases} \frac{dx}{dt} = x(2-x-y) \\ \frac{dy}{dt} = 3(3-y-2x) - 2xy \end
 ```
 ![11-07TwoSpecies](images/11-07TwoSpecies.png)  
 
- 
+可以看出在根据初值的不同，随着时间变化会出现两种趋势,看几个初值问题的解：
 
+```
+    fg5 = directionField(formulaR, formulaF,Rdomain, Fdomain)
+    points = [(0.3,0.2),(0.5,0.2),(2.0,4.0),(4.0,2.0),(3,4),(4,3),(0.3,0.4),(0.2,0.2)]
+    for point in points:
+        Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, point[0], point[1], dt = 0.001, steps = 20000)
+        plt.plot(Rvals, Fvals)
+
+    fg5.show()
+```
+
+![11-08TwoSolutions](images/11-08TwoSolutions.png)
 
