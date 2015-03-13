@@ -96,3 +96,16 @@ x(t) = 2y_0te^{3t} + ke^{3t}$$
 最后整理获得方程组的一般解为：
 $$Y(t) = \begin{pmatrix} x_0e^{3t} + 2y_0te^{3t}\\y_0e^{3t} \end{pmatrix}$$
 
+Sympy求解例子：
+```
+    from sympy.abc import t
+    from sympy import Function, dsolve, Eq
+    x = Function('x')
+    y = Function('y')
+    eqs=[Eq(x(t).diff(t),2*x(t)+3*y(t)),
+         Eq(y(t).diff(t),-4*y(t))]
+    s= dsolve(eqs)
+
+    print s
+    [x(t) == 3*C1*exp(-4*t) + 3*C2*exp(2*t), y(t) == -6*C1*exp(-4*t)]
+```

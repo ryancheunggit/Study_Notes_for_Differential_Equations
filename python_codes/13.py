@@ -37,5 +37,14 @@ fg1.show()
 fg2 = plt.figure()
 plt.plot(tdomain, Rvals, 'r', tdomain, Fvals, 'b')
 
+# solve using dsolve?
 
+x = Function('x')
+y = Function('y')
+from sympy.abc import t
+eqs=[Eq(x(t).diff(t),2*x(t)+3*y(t)),
+     Eq(y(t).diff(t),-4*y(t))]
+s= dsolve(eqs)
+
+print s
 
