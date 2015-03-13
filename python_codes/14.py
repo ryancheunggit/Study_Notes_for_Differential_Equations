@@ -29,3 +29,17 @@ Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 2.0, 0.0, dt = 0.5
 
 for i in range(4):
     print "%10s" % Rvals[i], "%10s" % Fvals[i]
+    
+    
+    
+R = Function('R')
+F = Function('F')
+
+formulaR = F(t)
+formulaF = -2*R(t) - 3*F(t)
+
+Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 1.0, 1.0, dt = 0.25, steps = 7)
+
+
+for i in range(len(Rvals)):
+    print "%10s" % Rvals[i], "%10s" % Fvals[i]
