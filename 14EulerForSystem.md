@@ -3,7 +3,7 @@
 $$\begin{cases} y(t_{i+1}) \approx y(t_{i}) + \frac{dy}{dt}\bigg|_{t=t_i} = y(t_{i}) + \frac{dy}{dt}\bigg|_{y=y(i), x = x(i)} \\ x(t_{i+1}) \approx x(t_{i}) + \frac{dx}{dt}\bigg|_{t=t_i} = x(t_{i}) + \frac{dx}{dt}\bigg|_{y=y(i), x = x(i)} \end{cases}$$
 
 给定方程组：
-$$\begin{cases} \frac{dx}{dt} = -y\\ \frac{dy}{dt} = x - y \end{cases},\qquad (x_0,y_0) = (2,0)$$    
+$$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases},\qquad (x_0,y_0) = (2,0)$$    
 选用步长$$\delta t = 0.5$$用欧拉方法进行近似：
 ```
     import numpy as np
@@ -34,8 +34,12 @@ $$\begin{cases} \frac{dx}{dt} = -y\\ \frac{dy}{dt} = x - y \end{cases},\qquad (x
 
     Tvals,Rvals,Fvals = numericalApproxForTwo(formulaR, formulaF, 2.0, 0.0, dt = 0.5, steps = 20)
 
-
     for i in range(4):
         print "%10s" % Rvals[i], "%10s" % Fvals[i]
+           2.0        0.0
+    2.00000000000000 1.00000000000000
+    1.50000000000000 1.50000000000000
+    0.750000000000000 1.50000000000000
+
 ```
 
