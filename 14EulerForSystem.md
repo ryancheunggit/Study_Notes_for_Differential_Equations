@@ -1,6 +1,5 @@
 # 欧拉方法用于方程组
 发现前几周已经不经意之间写了这个方法的程序。。。
-$$\begin{cases} y(t_{i+1}) \approx y(t_{i}) + \frac{dy}{dt}\bigg|_{t=t_i} = y(t_{i}) + \frac{dy}{dt}\bigg|_{y=y(i), x = x(i)} \\ x(t_{i+1}) \approx x(t_{i}) + \frac{dx}{dt}\bigg|_{t=t_i} = x(t_{i}) + \frac{dx}{dt}\bigg|_{y=y(i), x = x(i)} \end{cases}$$
 
 给定方程组：
 $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases},\qquad (x_0,y_0) = (2,0)$$    
