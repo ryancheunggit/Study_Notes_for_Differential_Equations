@@ -44,6 +44,7 @@ $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases}, \qquad 
     0.750000000000000 1.50000000000000
 ```
 
+用向量形式：
 
 
 
