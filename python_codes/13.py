@@ -48,3 +48,19 @@ s= dsolve(eqs)
 
 print s
 
+x = Function('x')
+y = Function('y')
+from sympy.abc import t
+eqs=[Eq(x(t).diff(t),x(t)*y(t)),
+     Eq(y(t).diff(t),y(t)+1)]
+s= dsolve(eqs)
+
+
+x = Function('x')
+y = Function('y')
+from sympy.abc import t
+eqs=[Eq(x(t).diff(t),x(t) + 2*y(t) + 1),
+     Eq(y(t).diff(t),3*y(t))]
+s= dsolve(eqs)
+
+

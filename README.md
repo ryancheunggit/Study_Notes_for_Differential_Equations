@@ -11,5 +11,6 @@ TO DO List：
 + Feb.28 Module10 Systems of Differential Equations    
 + Mar.07 Module11 Vector Fields, Direction Fields, Phase Plane      
 + Mar.08 Module12 Damped Harmonic Oscillation      
-+ Mar.13 Module13 Analytic Methods for Special Systems     
++ Mar.13 Module13 Analytic Methods for Special Systems       
++ Mar.13 Module14 Euler's Method for Systems    
 + 
