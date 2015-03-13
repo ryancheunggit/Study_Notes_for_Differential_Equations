@@ -2,7 +2,7 @@
 发现前几周已经不经意之间写了这个方法的程序。。。
 
 给定方程组：
-$$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases},\qquad (x_0,y_0) = (2,0)$$    
+$$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases}, \qquad (x_0,y_0) = (2,0)$$    
 选用步长$$\delta t = 0.5$$用欧拉方法进行近似：
 ```
     import numpy as np
