@@ -1,4 +1,5 @@
 # 特殊方程组的分析解法
+## 例子方程组
 我们很少能用分析解法求解微分方程组，但还是有些是可解的。   
 
 考虑如下方程组，和初值：
@@ -61,4 +62,22 @@ $$Y(t) = \begin{pmatrix} e^t + e^{-t} \\ e^t \end{pmatrix} $$
 $$\frac{dY}{dt} = \begin{pmatrix} e^t -e^{-t}\\ e^t \end{pmatrix}$$  
 $$F(Y(t)) = \begin{pmatrix} 2e^t - (e^t + e^{-t})\\ e^t \end{pmatrix} = \begin{pmatrix} e^t -e^{-t}\\ e^t \end{pmatrix}$$
 并且$$Y(0) = \begin{pmatrix}  2\\1 \end{pmatrix}$$    
+
+##**部分解耦方程组(Partially Decoupled Systems)**   
+上面的例子中，注意到$$\frac{dy}{dt} = y$$并不包含$$x$$，我们知道该方程的一般解为：     
+$$y(t)= y_0e^t$$    
+将其带入到$$\frac{dx}{dt} = 2y - x$$中去：  
+$$\frac{dy}{dt}  = 2y_0e^t -x $$   
+得到一个非齐次的线性方程，我们可以用猜解法求解，也可以用积分因子来求解。    
+下面用猜解法：
+对应的齐次方程的一般解为 $$ke^{-t}$$ 
+猜测$$x_p = \alpha e^t$$  
+不难求出$$\alpha = y_0$$  
+获得特殊解为:$$x_p = y_0e^t$$  
+因此一般解为$$x(t) = y_0e^t + ke^{-t}$$    
+将初值带入上式，可以求解出$$k = x_0 - y_0$$    
+
+最后，获得方程组的一般解为：
+$$Y(t) = \begin{pmatrix} y_0e^t + (x_0 - y_0)e^{-t}\\y_0e^t \end{pmatrix}$$
+
 
