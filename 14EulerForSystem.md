@@ -1,9 +1,10 @@
 # 欧拉方法用于方程组
 发现前几周已经不经意之间写了这个方法的程序。。。
+$$Y(i+1) \approx Y(i) + F(Y(i))\Delta t$$
 
 给定方程组：
 $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases}, \qquad (x_0,y_0) = (2,0)$$    
-选用步长$$\delta t = 0.5$$用欧拉方法进行近似：
+选用步长$$\Delta t = 0.5$$用欧拉方法进行近似：
 ```
     import numpy as np
     import sympy
@@ -39,6 +40,5 @@ $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases}, \qquad 
     2.00000000000000 1.00000000000000
     1.50000000000000 1.50000000000000
     0.750000000000000 1.50000000000000
-
 ```
 
