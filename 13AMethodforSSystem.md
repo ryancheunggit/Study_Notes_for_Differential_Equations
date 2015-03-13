@@ -80,4 +80,19 @@ $$\frac{dy}{dt}  = 2y_0e^t -x $$
 最后，获得方程组的一般解为：
 $$Y(t) = \begin{pmatrix} y_0e^t + (x_0 - y_0)e^{-t}\\y_0e^t \end{pmatrix}$$
 
+另一个例子：
+
+$$\begin{cases}\frac{dx}{dt} = 3x + 2y \\ \frac{dy}{dt} = 3y \end{cases}$$
+首先获得$$y(t) = y_0e^{3t}$$    
+带入$$\frac{dx}{dt} = 3x + 2y$$，获得$$\frac{dx}{dt} = 3x + 2y_0e^{3t}$$   
+用积分因子来求解：   
+令$$\mu (t) = e^{\int -3dt} = e^{-3t}$$   
+两边同乘积分因子： 
+$$(e^{-3t})(\frac{dx}{dt}) - 3xe^{-3t} = 2y_0\\
+\frac{d}{dt}(e^{-3t}x) = 2y_0\\
+e^{-3t}x = 2y_0t = k\\
+x(t) = 2y_0te^{3t} + ke^{3t}$$
+带入初值求得$$k = x_0$$
+最后整理获得方程组的一般解为：
+$$Y(t) = \begin{pmatrix} x_0e^{3t} + 2y_0te^{3t}\\y_0e^{3t} \end{pmatrix}$$
 
