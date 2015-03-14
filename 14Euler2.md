@@ -45,6 +45,33 @@ $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - y \end{cases}, \qquad 
 ```
 
 用向量形式：
+```
+    def eulerSystem(Y, y0, variables, dt, steps):
+        tdomain = np.array([i*dt for i in range(steps)])
+        for t in tdomain[1:]:
+            d = [f.subs({variables[i]:y0[i][-1] for i in range(len(variables))}) for f in Y]
+            for i in range(len(y0)):
+                y0[i].append(y0[i][-1] + d[i]*dt)
+        return y0
+                
+    x = Function('x')
+    y = Function('y')
+    formulax = y(t)
+    formulay = -2*x(t) - 3*y(t)
+    Y = [formulax, formulay]
+    y0 = [[1],[1]]
+    variables = ['x(t)', 'y(t)']
+    
+    values = eulerSystem(Y, y0, variables, dt = 0.25, steps  =5)
+    for i in range(len(values[0])):
+        print "%10s" % values[0][i], "%10s" % values[1][i]
+    
+             1          1
+    1.25000000000000 -0.250000000000000
+    1.18750000000000 -0.687500000000000
+    1.01562500000000 -0.765625000000000
+    0.824218750000000 -0.699218750000000
+```
 
 
 
