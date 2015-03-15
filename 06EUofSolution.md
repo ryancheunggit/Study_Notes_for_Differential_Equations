@@ -18,7 +18,7 @@ $$\frac{dy}{dt} = \frac{y}{t}$$
 例如：
 $$\frac{dy}{dt}=1+y^2,\qquad y(0) = 0$$
 方程右边$$1+y^2$$在$$t-y$$平面是连续的，满足定理条件。  
-通过分离变量法求得$$y(t)=tan(1+C)$$
+通过分离变量法求得$$y(t)=tan(t+C)$$
 带入初值，求出$$C = 0$$，因此解为$$y(t)=tan(t)$$  
 ```
     import sympy
@@ -33,7 +33,7 @@ $$\frac{dy}{dt}=1+y^2,\qquad y(0) = 0$$
     print solution
     # result is : tan(t)
 ```
-知道$$tan(t)$$的定义域为$$(-\frac{pi}{2},\frac{pi}{2})$$  
+知道$$tan(t)$$的定义域为$$(-\frac{\pi}{2},\frac{\pi}{2})$$  
 意味着本例子中$$\epsilon = \frac{pi}{2}$$
 
 ##唯一性定理
