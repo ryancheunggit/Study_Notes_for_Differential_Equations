@@ -75,15 +75,15 @@ $$\frac{dy_k}{dt}=k(\frac{dy_h}{dt})\\
 
 **一阶方程的扩展线性原理(The Extended Linearity Principle for First-Order Equations)**    
 
-考虑一个一阶非齐次线性方程：
+考虑一个一阶非齐次线性方程(NHE)：
 $$\frac{dy}{dt}=a(t)y + b(t)$$   
-以及其对应的齐次方程：
+以及其对应的齐次方程(AHE)：
 $$\frac{dy}{dt}=a(t)y$$   
 
 1. 如果$$y_h(t)$$是齐次方程的任意一个解，而$$y_p(t)$$是相应的非齐次方程的任意一个解，那么$$y_h(t)+y_p(t)$$也是该非齐次方程的一个解。   
 2. 若$$y_h(t)$$和$$y_p(t)$$分别是非齐次方程的两个解，那么$$y_h(t)-y_p(t)$$是相应齐次方程的一个解。  
 
-因此，如果$$y_h(t)$$非零，则$$ky_h(t)+y_p(t)$$是非齐次方程的一般解。  
+因此，如果$$y_h(t)$$和$$y_p(t)$$分别是NHE和AHE的两个一般解，且$$y_h(t)$$非零，则$$ky_h(t)+y_p(t)$$是非齐次方程的一般解。  
 
 即：
 
@@ -263,7 +263,7 @@ $$\mu (t)\frac{dy}{dt} + \mu (t) g(t)y = \mu (t) \frac{dy}{dt} + \frac{d\mu}{dt}
 在原方程两边同时乘以$$\mu (t)$$，便可以求解了。
 
 方法小结：
-1. 给定一个非齐次微分方程：$$\frac{dy}{dt}+g(t) = b(t)$$  
+1. 给定一个非齐次微分方程：$$\frac{dy}{dt}+g(t)y = b(t)$$  
 2. 令积分因子为：$$\mu (t) = e^{\int g(t)dt}$$  
 3. 方程两边同时乘以积分因子获得：$$\frac{d}{dt}(\mu (t)y)=\mu (t)b(t)$$  
 4. 两边同时针对$$t$$进行积分：$$\mu (t)y = \int \mu(t)b(t)dt$$  
