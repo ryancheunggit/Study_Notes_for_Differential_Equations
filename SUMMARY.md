@@ -16,5 +16,6 @@
    * [1.12 阻尼谐振](12DampedHarmonicOscillation.md)
    * [1.13 特殊方程组的分析解法](13AMethodforSSystem.md)    
    * [1.14 方程组欧拉方法](14Euler2.md)    
-   * [1.15 方程组解的存在性和唯一性](15EUTheoryforSystems.md)
+   * [1.15 方程组解的存在性和唯一性](15EUTheoryforSystems.md)  
+   * [1.16 SIR模型](16SIR.md)
 
