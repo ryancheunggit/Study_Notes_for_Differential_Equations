@@ -42,4 +42,9 @@ $$\begin{cases} \frac{dS}{dt} = - \alpha SI \\ \frac{dI}{dt} = \alpha SI - \beta
 这个$$S = \frac{\beta}{\alpha} = \rho$$是一个阈值，决定了$$I(t)$$的增减性。 
 也就是说一旦易受感染的人数$$S$$大于阈值，受感染的人数就会增加；一旦易受感染的人数$$S$$小于阈值，受感染的人数就会减少。   
 
-
+下面是一个事实：
+方程组$$SI$$平面内的解曲线满足如下等式：    
+$$I+S-\rho ln(S) = \text{constant}$$  
+可以用初值以及$$I_{max}$$时的$$S = \rho$$来求解最大感染人数$$I_{max}$$  
+$$I_{max} + \rho -\rho ln(\rho)= I_0 + S_0 - \rho ln(S-0)$$   
+代入数据即可求得$$I_{max}$$
