@@ -143,7 +143,7 @@ $$\frac{dY}{dt} = F(Y)$$
 $$\begin{cases} \frac{dx}{dt} = -y \\ \frac{dy}{dt} = x - 0.3y \end{cases}$$  
 
 方程组对应的向量场为：
-$$F(Y) = F(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} -y \\ x - 0.3y \end{pmatirx}$$  
+$$F(Y) = F(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} -y \\ x - 0.3y \end{pmatrix}$$  
 
 假设初值为$$F(\begin{pmatrix} 0 \\ 1.5 \end{pmatrix})$$
 则对应解的成分图为：
