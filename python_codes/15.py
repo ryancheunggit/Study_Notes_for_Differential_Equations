@@ -52,3 +52,5 @@ formulax = x(t)**2+y(t)
 formulay = x(t)**2*y(t)**2
 eq = [Eq(Derivative(x(t),t),formulax), Eq(Derivative(y(t),t),formulay)]
 dsolve(eq)
+
+
