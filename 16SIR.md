@@ -32,4 +32,14 @@ $$S(t)+I(t)+R(t) = N, \text{for all t}$$
 其中任意一个方程都可以由另外两个方程的线性组合获得，因此让我们集中注意于二维平面。  
 $$\begin{cases} \frac{dS}{dt} = - \alpha SI \\ \frac{dI}{dt} = \alpha SI - \beta I \end{cases}$$   
 
+尝试寻找一下模型的平衡解吧：
+若要$$\frac{dS}{dt} = - \alpha SI$$则，要么$$S(t)=0$$或者$$I(t)=0$$。
+若要$$\alpha SI - \beta I = I(\alpha S - \beta) = 0$$则需要：$$I = 0$$或者$$S = \frac{\beta}{\alpha}$$  
+
+简单分析下模型：
+因为$$\alpha, \beta, S, I, R$$都是非负的，因此$$S(t)$$是非增的，$$R(t)$$是非减的，而$$I(t)$$的增减性取决于1$$I$$是否为零；2$$\alpha S - \beta$$的符号正负。
+
+这个$$S = \frac{\beta}{\alpha} = \rho$$是一个阈值，决定了$$I(t)$$的增减性。 
+也就是说一旦易受感染的人数$$S$$大于阈值，受感染的人数就会增加；一旦易受感染的人数$$S$$小于阈值，受感染的人数就会减少。   
+
 
