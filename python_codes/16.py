@@ -16,6 +16,7 @@ def eulerSystem(Y, y0, variables, dt, steps):
         d = [f.subs({variables[i]:y0[i][-1] for i in range(len(variables))}) for f in Y]
         for i in range(len(y0)):
             y0[i].append(y0[i][-1] + d[i]*dt)
+        print t
     return y0
 
 Y = [formulaS, formulaI]
