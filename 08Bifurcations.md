@@ -56,8 +56,8 @@ $$\frac{dy}{dt}=y^3-ay$$
             solutions.pop(solutions.index(0))
             for s in solutions:
                 adomain = np.linspace(float(solve(s, a)[0]), max(avals))
-                yvals = [s.subs(a,aval) for aval in adomain]
-                plt.plot(adomain, yvals, color = 'blue')
+            yvals = [s.subs(a,aval) for aval in adomain]
+            plt.plot(adomain, yvals, color = 'blue')
         except:
             None
             
