@@ -62,6 +62,14 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
          tdomain, np.array([solution3.subs(t, tval) for tval in tdomain]), 'red')
 ```
 
+![06-01threeSolutions](images/06-01threeSolutions.png)
+
+这三个函数都是微分方程的解（第一个是平衡解）。
+
+唯一性定理：  
+如果$$f(t,y)$$以及$$\partial f/\partial y$$范围$${(t,y)| a<t <b, c< y< d}$$内都是连续的，给定一个该范围内的初值$$(t_0,y_0)$$，则存在一个$$\epsilon >0$$，当$$t_0-\epsilon < t < t_0 + \epsilon $$时，该初值问题有唯一解。  
+
+
 
 
 
