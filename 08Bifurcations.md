@@ -55,11 +55,7 @@ $$\frac{dy}{dt}=y^3-ay$$
         try:
             solutions.pop(solutions.index(0))
             for s in solutions:
-<<<<<<< HEAD
                 adomain = np.linspace(float(solve(s, a)[0]), max(avals))
-=======
-            adomain = np.linspace(float(solve(s, a)[0]), max(avals))
->>>>>>> parent of 1a3b031... Update 08Bifurcations.md
             yvals = [s.subs(a,aval) for aval in adomain]
             plt.plot(adomain, yvals, color = 'blue')
         except:
