@@ -74,7 +74,7 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
     formula.diff(y(t))
     # result is : sin(2*t)/(3*y(t)**(2/3))
 ```  
-
+![form](for.png)
   
 y不可取0，因而不是连续的，因此违背唯一性定理。  
 
