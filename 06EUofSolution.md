@@ -75,6 +75,12 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
     # result is : sin(2*t)/(3*y(t)**(2/3))
 ```  
 
+  
+y不可取0，因而不是连续的，因此违背唯一性定理。  
+
+如果我们将定义域限定为$$y > 0$$，则原微分方程的有效初值问题均有唯一解。  
+
+
 ##例子
 $$\frac{dy}{dt}=-2ty^2,\frac{\partial f}{\partial y}=-4ty$$  
 注意到$$f(t,y)$$和$$\partial f/ \partial y$$在$$t-y$$平面上均连续，因此微分方程不仅有解，给定初值则解为唯一解。  
