@@ -69,6 +69,16 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
 唯一性定理：  
 如果$$f(t,y)$$以及$$\partial f/\partial y$$范围$${(t,y)| a<t <b, c< y< d}$$内都是连续的，给定一个该范围内的初值$$(t_0,y_0)$$，则存在一个$$\epsilon >0$$，当$$t_0-\epsilon < t < t_0 + \epsilon $$时，该初值问题有唯一解。  
 
+注意到上例中的偏微分
+```
+    formula.diff(y(t))
+    # result is : sin(2*t)/(3*y(t)**(2/3))
+```  
+
+$$\frac{\partial f}{\partial y}= \frac{sin(2t)}{{3y}^{\frac{2}{3}}}$$  
+y不可取0，因而不是连续的，因此违背唯一性定理。  
+
+如果我们将定义域限定为$$y > 0$$，则原微分方程的有效初值问题均有唯一解。  
 
 
 
