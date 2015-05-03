@@ -48,6 +48,20 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
 3. 红色：    
     $$y_2(t) = -\sqrt{\frac{8}{27}}sin^3t$$
 
+```
+    tdomain = np.linspace(-7,7,30)
+    
+    formula = sympy.root(y(t),3)*sympy.sin(2*t)
+    
+    solution1 = 0
+    solution2 = (8.0/27)**0.5*(sympy.sin(t))**3
+    solution3 = -1*(8.0/27)**0.5*(sympy.sin(t))**3
+    
+    plt.plot(tdomain, [0 for i in tdomain], 'blue', \
+         tdomain, np.array([solution2.subs(t, tval) for tval in tdomain]), 'black',\
+         tdomain, np.array([solution3.subs(t, tval) for tval in tdomain]), 'red')
+```
+
 
 
 
