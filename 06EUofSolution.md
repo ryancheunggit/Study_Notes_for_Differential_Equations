@@ -47,36 +47,6 @@ $$\frac{dy}{dt}=\sqrt[3]{y}sin(2t), \qquad y(0)=0$$
     $$y_2(t) = \sqrt{\frac{8}{27}}sin^3t$$
 3. 红色：    
     $$y_2(t) = -\sqrt{\frac{8}{27}}sin^3t$$
-```
-    tdomain = np.linspace(-7,7,30)
-    
-    formula = sympy.root(y(t),3)*sympy.sin(2*t)
-    
-    solution1 = 0
-    solution2 = (8.0/27)**0.5*(sympy.sin(t))**3
-    solution3 = -1*(8.0/27)**0.5*(sympy.sin(t))**3
-    
-    plt.plot(tdomain, [0 for i in tdomain], 'blue', \
-         tdomain, np.array([solution2.subs(t, tval) for tval in tdomain]), 'black',\
-         tdomain, np.array([solution3.subs(t, tval) for tval in tdomain]), 'red')
-```
-![06-01threeSolutions](images/06-01threeSolutions.png)
-
-这三个函数都是微分方程的解（第一个是平衡解）。
-
-唯一性定理：  
-如果$$f(t,y)$$以及$$\partial f/\partial y$$范围$${(t,y)| a<t <b, c< y< d}$$内都是连续的，给定一个该范围内的初值$$(t_0,y_0)$$，则存在一个$$\epsilon >0$$，当$$t_0-\epsilon < t < t_0 + \epsilon $$时，该初值问题有唯一解。  
-
-注意到上例中的偏微分
-```
-    formula.diff(y(t))
-    # result is : sin(2*t)/(3*y(t)**(2/3))
-```  
-
-$$\frac{\partial f}{\partial y}= \frac{sin(2t)}{{3y}^{\frac{2}{3}}}$$  
-y不可取0，因而不是连续的，因此违背唯一性定理。  
-
-如果我们将定义域限定为$$y > 0$$，则原微分方程的有效初值问题均有唯一解。  
 
 
 
