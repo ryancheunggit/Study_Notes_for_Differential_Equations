@@ -18,5 +18,5 @@
    * [1.14 方程组欧拉方法](14Euler2.md)    
    * [1.15 方程组解的存在性和唯一性](15EUTheoryforSystems.md)  
    * [1.16 SIR模型](16SIR.md)
-   * [2.1 线性方程组和其原理](17LinearSysandPrinc.md)
+   * [2.1 线性方程组和线性原理](17LinearSysandPrinc.md)
 
