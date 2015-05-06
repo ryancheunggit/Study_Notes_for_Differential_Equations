@@ -30,7 +30,9 @@ $$\frac{dy}{dt}=-\frac{\gamma}{\alpha}x-\frac{\beta}{\alpha}y$$
 对于线性方程组，可以用向量形式来表示。令：
 $$Y(t) = \begin{pmatrix} x(t) \ y(t) \end{pmatrix}$$  
 
-
+对应的斜率场为：
+$$F(Y) = F(\begin{pmatrix} x \ y \end{pmatrix}) = \begin{pmatrix} ax+by \ cx+dy \end{pmatrix}$$
+$$\qquad = \begin{matrix} a b \ c d \end{matrix} \begin{matrix} x \ y \end{matrix}$$
 
 
 
