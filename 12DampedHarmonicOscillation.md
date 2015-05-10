@@ -16,7 +16,7 @@ $$F_s + F_d = F = ma = m \frac{d^2y}{dt^2}\\
 m\frac{d^2y}{dt^2} + b\frac{dy}{dt} +ky = 0$$
 
 可以令$$v = \frac{dy}{dt}$$，将上面方程降为一个一阶方程组：
-$$\begin{cases} \frac{dy}{dt} = v \\ \frac{dv}{dt} = -\frac{k}{m}y - \frac{b}{m}v \end{cases}$$    
+$$\begin{cases} \frac{dy}{dt} = v \ \frac{dv}{dt} = -\frac{k}{m}y - \frac{b}{m}v \end{cases}$$    
 
 给定一个初始的位置$$y=3$$，令$$k,m$$不变，调节$$b$$值，看解的不同表现：
 
@@ -96,18 +96,18 @@ $${\lambda}^2 + 3\lambda + 2 = 0$$
 $$\begin{cases} \lambda = -2 \\ \lambda = -1 \end{cases}$$
 
 因此获得原方程的两组解：
-$$\begin{cases} y_1(t) = e^{-2t} \\ v_1(t) = -2e^{-2t}\end{cases}$$
+$$\begin{cases} y_1(t) = e^{-2t} \ v_1(t) = -2e^{-2t}\end{cases}$$
 
-$$\begin{cases} y_2(t) = e^{-t} \\ v_2(t) = -e^{-t}\end{cases}$$   
+$$\begin{cases} y_2(t) = e^{-t} \ v_2(t) = -e^{-t}\end{cases}$$   
 
 写成向量函数的形式为： 
-$$Y_1(t) = \begin{pmatrix} e^{-2t} \\ -2e^{-2t} \end{pmatrix}$$
+$$Y_1(t) = \begin{pmatrix} e^{-2t} \ -2e^{-2t} \end{pmatrix}$$
 对应初值为：
-$$ Y_1(0) = \begin{pmatrix} 1 \\ -2 \end{pmatrix}$$
+$$ Y_1(0) = \begin{pmatrix} 1 \ -2 \end{pmatrix}$$
 
-$$Y_2(t) = \begin{pmatrix} e^{-t} \\ -e^{-t} \end{pmatrix}$$
+$$Y_2(t) = \begin{pmatrix} e^{-t} \ -e^{-t} \end{pmatrix}$$
 对应初值为：
-$$ Y_2(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$$
+$$ Y_2(0) = \begin{pmatrix} 1 \ -1 \end{pmatrix}$$
 
 下图中，有两个解对应于上面这两个，是哪两个？
 ![12-04DHOThreeInitials](images/12-04DHOThreeInitials.png)
